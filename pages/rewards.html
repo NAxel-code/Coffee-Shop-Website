@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rewards - MR.COFFEE</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/responsive.css" />
+  <link rel="stylesheet" href="../css/rewards.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="../images/logo copy.png" alt="MR.COFFEE Logo" style="height: 40px; margin-right: 10px;" />
+        <h1>MR.COFFEE</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="rewards.html" class="active">Rewards</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="order.html">Order</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="rewards-section">
+      <!-- App Download Section -->
+      <div class="app-download">
+        <div class="app-content">
+          <h2>Download Our App</h2>
+          <p>Get exclusive rewards and track your points with the MR.COFFEE app</p>
+          <div class="app-buttons">
+            <a href="#" class="app-btn">
+              <img src="../images/appstore.png" alt="Download on App Store" />
+            </a>
+            <a href="#" class="app-btn">
+              <img src="../images/gplaystore.png" alt="Get it on Google Play" />
+            </a>
+          </div>
+        </div>
+        <div class="app-image">
+          <img src="../images/logo copy.png" alt="MR.COFFEE App" />
+        </div>
+      </div>
+
+      <!-- Rewards Grid -->
+      <div class="rewards-grid">
+        <div class="reward-card">
+          <img src="../images/buy1get1.jpg" alt="Buy 1 Get 1 Free" />
+          <div class="reward-content">
+            <h3>Buy 1 Get 1 Free</h3>
+            <p>Every Monday, enjoy our signature drinks with a friend!</p>
+            <button class="reward-btn" onclick="showAppDownload()">Get Reward</button>
+          </div>
+        </div>
+
+        <div class="reward-card">
+          <img src="../images/pastry.jpg" alt="Free Pastry" />
+          <div class="reward-content">
+            <h3>Free Pastry</h3>
+            <p>Get a free pastry with any coffee purchase on weekends!</p>
+            <button class="reward-btn" onclick="showAppDownload()">Get Reward</button>
+          </div>
+        </div>
+
+        <div class="reward-card">
+          <img src="../images/happyhour.jpg" alt="Happy Hour" />
+          <div class="reward-content">
+            <h3>Happy Hour</h3>
+            <p>20% off on all drinks from 3 PM to 5 PM on weekdays!</p>
+            <button class="reward-btn" onclick="showAppDownload()">Get Reward</button>
+          </div>
+        </div>
+
+        <div class="reward-card">
+          <img src="../images/birthday.jpg" alt="Birthday Special" />
+          <div class="reward-content">
+            <h3>Birthday Special</h3>
+            <p>Get a free drink and pastry on your birthday!</p>
+            <button class="reward-btn" onclick="showAppDownload()">Get Reward</button>
+          </div>
+        </div>
+
+        <div class="reward-card">
+          <img src="../images/studentdiscount.png" alt="Student Discount" />
+          <div class="reward-content">
+            <h3>Student Discount</h3>
+            <p>15% off on all items with a valid student ID!</p>
+            <button class="reward-btn" onclick="showAppDownload()">Get Reward</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>MR.COFFEE</h3>
+        <p>Making all taste coffee every day</p>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>Email: info@mrcoffee.com</p>
+        <p>Phone: (123) 456-7890</p>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="social-links">
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">Twitter</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 MR.COFFEE. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div id="appDownloadModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h3>Download Our App</h3>
+      <p>To get this reward, please download our app first!</p>
+      <div class="app-buttons">
+        <a href="#" class="app-btn">
+          <img src="../images/appstore.png" alt="Download on App Store" />
+        </a>
+        <a href="#" class="app-btn">
+          <img src="../images/gplaystore.png" alt="Get it on Google Play" />
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/rewards.js"></script>
+</body>
+</html>

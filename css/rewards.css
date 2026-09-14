@@ -1,0 +1,184 @@
+
+.rewards-section {
+  padding: 4rem 5%;
+  background-color: #f9f9f9;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* App Download Section */
+.app-download {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 4rem;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+.app-content {
+  flex: 1 1 300px;
+  padding-right: 2rem;
+}
+
+.app-content h2 {
+  font-size: 1.8rem;
+  color: #4A2C2A;
+  margin-bottom: 1rem;
+}
+
+.app-content p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.app-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.app-btn img {
+  width: 150px;
+  height: auto;
+}
+
+.app-image {
+  flex: 0 0 300px;
+  text-align: center;
+}
+
+.app-image img {
+  width: 200px;
+  height: auto;
+}
+
+
+.rewards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+/* Reward Card */
+.reward-card {
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.reward-card:hover {
+  transform: translateY(-5px);
+}
+
+.reward-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.reward-content {
+  padding: 1rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.reward-content h3 {
+  font-size: 1.1rem;
+  color: #4A2C2A;
+  margin-bottom: 0.5rem;
+}
+
+.reward-content p {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.reward-btn {
+  background-color: #8B4513;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.reward-btn:hover {
+  background-color: #6B3410;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.modal-content h3 {
+  margin-bottom: 1rem;
+  color: #4A2C2A;
+}
+
+.modal-content p {
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.modal-content .app-buttons {
+  justify-content: center;
+}
+
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Responsive tes */
+@media screen and (max-width: 768px) {
+  .app-download {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  .app-content {
+    padding: 0;
+    margin-bottom: 2rem;
+  }
+
+  .app-image img {
+    width: 80px;
+  }
+
+  .reward-card img {
+    height: 160px;
+  }
+}
