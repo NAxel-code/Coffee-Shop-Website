@@ -4,7 +4,7 @@
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 
-Aplikasi *landing page* dan *company profile* untuk kedai kopi premium. Dilengkapi dengan antarmuka yang sangat interaktif (menggunakan efek *glassmorphism* dan animasi *scroll*), halaman menu lengkap, hingga profil *founder* dan promo spesial.
+Aplikasi *landing page* dan *company profile* untuk coffeeshop premium. Dilengkapi dengan interface yang  interaktif , halaman menu lengkap, hingga profil *founder* dan promo spesial.
 
 ## Daftar Isi
 
