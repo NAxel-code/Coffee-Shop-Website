@@ -41,16 +41,16 @@ Aplikasi *landing page* dan *company profile* untuk coffeeshop premium. Dilengka
 <summary><b>Klik untuk melihat Screenshot UI</b></summary>
 
 ### 🏠 Home Page
-![Home](screenshots/ui_screen_2.png)
+![Home](https://raw.githubusercontent.com/NAxel-code/Coffee-Shop-Website/assets/screenshots/ui_screen_2.png)
 
 ### ☕ Our Menu
-![Menu](screenshots/ui_screen_1.png)
+![Menu](https://raw.githubusercontent.com/NAxel-code/Coffee-Shop-Website/assets/screenshots/ui_screen_1.png)
 
 ### 🎁 Rewards & App
-![Rewards](screenshots/ui_screen_5.png)
+![Rewards](https://raw.githubusercontent.com/NAxel-code/Coffee-Shop-Website/assets/screenshots/ui_screen_5.png)
 
 ### 🛒 Place Order
-![Order](screenshots/ui_screen_3.png)
+![Order](https://raw.githubusercontent.com/NAxel-code/Coffee-Shop-Website/assets/screenshots/ui_screen_3.png)
 
 </details>
 
