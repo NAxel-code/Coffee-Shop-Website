@@ -35,17 +35,45 @@ Aplikasi *landing page* dan *company profile* untuk coffeeshop premium. Dilengka
 | Layout & Animasi | Flexbox, CSS Grid, CSS Transitions/Keyframes, IntersectionObserver API |
 | Ikonografi & Aset | Aset lokal dioptimalkan (JPG/PNG) |
 
+## 📸 Tampilan UI
+
+<details>
+<summary><b>Klik untuk melihat Screenshot UI</b></summary>
+
+### 🏠 Home Page
+![Home](screenshots/ui_screen_2.png)
+
+### ☕ Our Menu
+![Menu](screenshots/ui_screen_1.png)
+
+### 🎁 Rewards & App
+![Rewards](screenshots/ui_screen_5.png)
+
+### 🛒 Place Order
+![Order](screenshots/ui_screen_3.png)
+
+</details>
+
 ## Arsitektur
 
-Karena ini adalah *static web application*, arsitekturnya difokuskan pada pengiriman *asset* langsung ke klien tanpa *backend routing* yang kompleks:
+Arsitektur aplikasi ini berfokus pada pengiriman *asset* statis (HTML, CSS, JS) secara langsung ke *client* (browser) tanpa menggunakan proses *backend routing* atau rendering sisi server:
 
 ```mermaid
 flowchart LR
-    U[Browser Client] -->|HTTP Request| S[Static File Server]
-    S -->|Render| H[HTML Pages]
-    H -->|Load| C[CSS Stylesheets]
-    H -->|Load| J[JavaScript Logic]
-    H -->|Load| I[Image Assets]
+    Client((Web Browser))
+    Server[Static Web Server]
+    
+    Client <-->|HTTP Request / Response| Server
+    
+    subgraph Assets [Frontend Resources]
+        HTML(HTML Pages)
+        CSS(CSS Stylesheets)
+        JS(Vanilla JS Logic)
+        IMG(Image Assets)
+    end
+    
+    Server --> HTML
+    HTML --> CSS & JS & IMG
 ```
 
 ## Struktur Folder
