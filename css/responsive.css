@@ -1,87 +1,12 @@
-@media screen and (max-width: 1024px) {
-    .banner-content h2 {
-        font-size: 2.8rem;
-    }
+/* ==========================================================================
+   MR.COFFEE - ADDITIONAL RESPONSIVE & ACCESSIBILITY UTILITIES
+   ========================================================================== */
 
-    .ceo-content {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .ceo-content img {
-        width: 250px;
-        height: 250px;
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 }
-
-@media screen and (max-width: 768px) {
-    .navbar {
-        padding: 1rem 3%;
-    }
-
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: #fff;
-        padding: 1rem 0;
-        flex-direction: column;
-        align-items: center;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-
-    .banner-content h2 {
-        font-size: 2.2rem;
-    }
-
-    .banner-content p {
-        font-size: 1rem;
-    }
-
-    .reward-card {
-        flex-direction: column;
-    }
-
-    .reward-card img {
-        width: 100%;
-        height: 200px;
-    }
-
-    .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .banner-content h2 {
-        font-size: 1.8rem;
-    }
-
-    .product-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .social-links {
-        justify-content: center;
-    }
-
-    .ceo-content img {
-        width: 200px;
-        height: 200px;
-    }
-} 

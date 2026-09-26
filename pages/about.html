@@ -1,106 +1,201 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - MR.COFFEE</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-    <link rel="stylesheet" href="../css/about.css">
+    <title>Tentang Kami & Filosofi Kopi - MR.COFFEE</title>
+    <meta name="description" content="Kisah perjalanan MR.COFFEE, filosofi kopi founder Nicholas Axel, dan dedikasi kami menghadirkan biji kopi specialty terbaik Indonesia.">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/about.css">
 </head>
 <body>
+    <!-- Navigation Bar -->
     <header>
         <nav class="navbar">
-            <div class="logo">
-                <h1>MR.COFFEE</h1>
-            </div>
+            <a href="../index.html" class="logo">
+                <img src="../images/logo copy.png" alt="MR.COFFEE Logo">
+                <div class="logo-text-group">
+                    <h1>MR.COFFEE</h1>
+                    <span class="logo-tagline">Specialty Roasters</span>
+                </div>
+            </a>
+
             <ul class="nav-links">
                 <li><a href="../index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
                 <li><a href="rewards.html">Rewards</a></li>
                 <li><a href="about.html" class="active">About Us</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="order.html">Order</a></li>
+                <li><a href="order.html">Order Online</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+
+            <div class="nav-actions">
+                <button class="cart-trigger-btn" aria-label="Lihat Keranjang">
+                    <span>☕ Keranjang</span>
+                    <span class="cart-badge">0</span>
+                </button>
+                <button class="hamburger" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </nav>
     </header>
 
-    <main>
-        <section class="about-section">
-            <div class="ceo-section">
-                <div class="ceo-content">
-                    <img src="../images/susantoliman.jpg" alt="Nicholas Axel">
-                    <div class="ceo-info">
-                        <h2>Nicholas Axel</h2>
-                        <p class="title">Founder & CEO</p>
-                        <p class="story">
-                            In the heart of a bustling city, I founded MR.COFFEE with a simple yet powerful vision: to make everyone taste coffee every day. My journey began with a passion for creating the perfect cup of coffee and a desire to build a community around this shared love. With years of experience in the coffee industry and a deep understanding of what makes a great coffee shop, I've worked tirelessly to create a space where people can connect, create, and enjoy exceptional coffee.
-                        </p>
-                    </div>
+    <main class="about-page-wrapper">
+        <!-- Hero Header -->
+        <div class="about-hero-block">
+            <span class="section-kicker">OUR HERITAGE & ROOTS</span>
+            <h1>Membawa Kehangatan Kopi ke Dalam Kehidupan Sehari-hari</h1>
+            <p>Sebuah dedikasi tulus dari kecintaan pada aroma biji kopi pilihan, menghormati jerih payah petani lokal, dan menciptakan tempat bercerita yang hangat.</p>
+        </div>
+
+        <!-- Founder Feature -->
+        <div class="founder-editorial-card">
+            <div class="founder-img-col">
+                <div class="founder-frame">
+                    <img src="../images/susantoliman.jpg" alt="Nicholas Axel - Founder & CEO MR.COFFEE">
+                </div>
+                <div class="founder-gold-tag">Founder & CEO</div>
+            </div>
+            <div class="founder-text-col">
+                <h2>Nicholas Axel</h2>
+                <div class="founder-subtitle">Founder & Chief Coffee Explorer</div>
+                <div class="founder-bio">
+                    <p>
+                        "Di tengah hiruk pikuk ritme perkotaan yang serba cepat, saya memulai MR.COFFEE dengan satu mimpi sederhana: menghadirkan secangkir kopi istimewa yang bisa dinikmati siapa saja, setiap hari, tanpa rasa pretensius."
+                    </p>
+                    <p>
+                        Perjalanan ini dimulai dari dapur kecil dengan satu mesin sangrai manual dan rasa penasaran tak berujung terhadap ragam profil rasa kopi Indonesia. Bersama para petani lokal di pegunungan Gayo, Toraja, hingga Kintamani, kami membangun rantai pasok yang adil, berkelanjutan, dan penuh rasa hormat.
+                    </p>
+                    <p>
+                        Bagi kami, kafe bukan sekadar tempat bertransaksi minuman berkafein, melainkan sanctuary hangat di mana ide-ide baru lahir dan persahabatan terjalin.
+                    </p>
+                </div>
+                <div class="founder-signature">
+                    Nicholas Axel — MR.COFFEE Roastery
+                </div>
+            </div>
+        </div>
+
+        <!-- Farm to Cup Process -->
+        <section class="process-section">
+            <div class="process-header">
+                <span class="section-kicker">KUALITAS TANPA KOMPROMI</span>
+                <h2>Dari Perkebunan Hingga Meja Anda</h2>
+                <p style="color:var(--text-muted); max-width:550px; margin:0.5rem auto 0;">Empat pilar komitmen kami dalam menghadirkan secangkir kopi sempurna setiap hari.</p>
+            </div>
+
+            <div class="process-steps-grid">
+                <div class="process-step-card">
+                    <span class="step-num-badge">01</span>
+                    <div class="step-icon-wrap">🌱</div>
+                    <h3>Ethical Highland Sourcing</h3>
+                    <p>Memilih hanya ceri kopi merah matang optimal dari petani dataran tinggi binaan dengan skema harga beli yang menyejahterakan.</p>
+                </div>
+
+                <div class="process-step-card">
+                    <span class="step-num-badge">02</span>
+                    <div class="step-icon-wrap">🔥</div>
+                    <h3>Small-Batch Artisan Roasting</h3>
+                    <p>Disangrai setiap minggu dalam batch kecil dengan kurva suhu digital presisi untuk mengunci aroma bunga, karamel, dan buah alami.</p>
+                </div>
+
+                <div class="process-step-card">
+                    <span class="step-num-badge">03</span>
+                    <div class="step-icon-wrap">⚖️</div>
+                    <h3>Daily Barista Calibration</h3>
+                    <p>Setiap pagi sebelum kafe dibuka, barista kami mengkalibrasi gilingan kopi, rasio air, TDS, dan tekanan ekstraksi hingga sempurna.</p>
+                </div>
+
+                <div class="process-step-card">
+                    <span class="step-num-badge">04</span>
+                    <div class="step-icon-wrap">☕</div>
+                    <h3>Warmth & Community</h3>
+                    <p>Disajikan dengan senyuman ramah dan suasana kafe yang nyaman, menjadikannya rumah kedua bagi setiap pecinta kopi.</p>
                 </div>
             </div>
         </section>
-            <div class="mission-section">
-                <h2>Our Mission</h2>
-                <p>
-                    At MR.COFFEE, our mission is to make everyone taste coffee every day. We believe that coffee is more than just a beverage – it's a catalyst for connection, creativity, and community. Through our carefully crafted brews and warm, inviting atmosphere, we strive to create moments of joy and inspiration for our customers.
-                </p>
-            </div>
 
-            <div class="vision-section">
-                <h2>Our Vision</h2>
+        <!-- Mission & Vision -->
+        <div class="mission-vision-grid">
+            <div class="mv-card">
+                <h2><span>🎯</span> Misi Kami</h2>
                 <p>
-                    We envision a world where every person has access to exceptional coffee experiences. Through our commitment to quality, sustainability, and community, we aim to be the leading coffee destination that brings people together and creates lasting memories over a perfect cup of coffee.
+                    Menghadirkan standar kopi specialty kelas dunia yang dapat diakses dengan ramah oleh semua lapisan masyarakat, mendukung kesejahteraan petani kopi lokal nusantara, dan mengedepankan praktik keberlanjutan ramah lingkungan di setiap langkah seduhan kami.
                 </p>
             </div>
+            <div class="mv-card">
+                <h2><span>🔭</span> Visi Kami</h2>
+                <p>
+                    Menjadi pelopor roastery dan kafe artisan terdepan di Indonesia yang menginspirasi gaya hidup minum kopi bernilai rasa tinggi, mempererat kehangatan sosial, serta mempromosikan kekayaan kopi lokal ke panggung dunia.
+                </p>
+            </div>
+        </div>
 
-            <div class="story-section">
-                <h2>Our Story</h2>
-                <p>
-                    MR.COFFEE began as a small coffee shop in the heart of the city, known for its quirky charm and the aroma of freshly brewed wonders. Every cup at MR.COFFEE tells a story, crafted with beans sourced from remote mountaintops and brought to life by baristas who seem more like artists. The shop, with its mismatched chairs and walls covered in customer doodles, became a cozy haven for dreamers, creatives, and anyone in need of inspiration.
-                </p>
-                <p>
-                    It wasn't just about coffee; it was about connection. The place seemed to turn strangers into friends over a shared cup of joy. MR.COFFEE's charm lived not only in its brews but in the laughter, the conversations, and the warm smiles that filled the air.
-                </p>
-                <p>
-                    Today, we continue to grow and evolve, but our core values remain the same: quality coffee, genuine connections, and a commitment to making everyone's day a little better, one cup at a time.
-                </p>
+        <!-- Cafe Story Card -->
+        <div class="story-full-card">
+            <h2>Rumah Bagi Para Penikmat Cerita</h2>
+            <p>
+                MR.COFFEE bermula dari kedai kecil dengan kursi kayu sederhana dan aroma kopi segar yang merebak ke sudut jalan. Sejak hari pertama, kami percaya bahwa setiap cangkir yang kami tuang memiliki kekuatan untuk mengubah hari seseorang menjadi lebih baik.
+            </p>
+            <p>
+                Terima kasih telah menjadi bagian dari perjalanan kami. Mari duduk, hirup aromanya, dan nikmati secangkir kopi terbaik Anda hari ini.
+            </p>
+            <div style="margin-top: 2rem;">
+                <a href="menu.html" class="btn-primary">
+                    <span>Lihat Menu Pilihan Kami →</span>
+                </a>
             </div>
-        </section>
+        </div>
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-section">
+            <div class="footer-brand">
                 <h3>MR.COFFEE</h3>
-                <p>Making all taste coffee every day</p>
+                <p>Specialty coffee roastery & cafe modern yang berkomitmen menghadirkan pengalaman kopi bernutrisi dan bermakna untuk semua penikmat kopi.</p>
             </div>
             <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>Email: info@mrcoffee.com</p>
-                <p>Phone: (123) 456-7890</p>
+                <h4>Navigasi</h4>
+                <ul class="footer-nav-list">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="menu.html">Katalog Menu</a></li>
+                    <li><a href="rewards.html">Voucher & Rewards</a></li>
+                    <li><a href="about.html">Tentang Kami</a></li>
+                    <li><a href="order.html">Order Online</a></li>
+                </ul>
             </div>
             <div class="footer-section">
-                <h3>Follow Us</h3>
+                <h4>Kontak Kafe</h4>
+                <p>📍 Jl. Senopati No. 42, Kebayoran Baru, Jakarta Selatan</p>
+                <p>📞 (021) 555-0199</p>
+                <p>✉️ hello@mrcoffee.id</p>
+            </div>
+            <div class="footer-section">
+                <h4>Ikuti Komunitas</h4>
                 <div class="social-links">
-                    <a href="#">Instagram</a>
-                    <a href="#">Facebook</a>
-                    <a href="#">Twitter</a>
+                    <a href="#" class="social-icon-btn" title="Instagram">IG</a>
+                    <a href="#" class="social-icon-btn" title="TikTok">TT</a>
+                    <a href="#" class="social-icon-btn" title="Twitter / X">X</a>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 MR.COFFEE. All rights reserved.</p>
+            <span>&copy; 2026 MR.COFFEE Roastery. Hak Cipta Dilindungi.</span>
+            <span>Crafted with love & coffee beans.</span>
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="../js/main.js"></script>
 </body>
-</html> 
+</html>

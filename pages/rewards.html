@@ -1,150 +1,266 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rewards - MR.COFFEE</title>
-  <link rel="stylesheet" href="../css/style.css" />
-  <link rel="stylesheet" href="../css/responsive.css" />
-  <link rel="stylesheet" href="../css/rewards.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rewards & Promo Member - MR.COFFEE</title>
+    <meta name="description" content="Kumpulkan poin loyalty Bean Rewards, nikmati diskon mingguan, voucher promo Buy 1 Get 1, dan penawaran spesial member MR.COFFEE.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/rewards.css">
 </head>
-
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="logo">
-        <img src="../images/logo copy.png" alt="MR.COFFEE Logo" style="height: 40px; margin-right: 10px;" />
-        <h1>MR.COFFEE</h1>
-      </div>
-      <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="rewards.html" class="active">Rewards</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="menu.html">Menu</a></li>
-        <li><a href="order.html">Order</a></li>
-      </ul>
-      <div class="hamburger">
-        <span></span><span></span><span></span>
-      </div>
-    </nav>
-  </header>
-
-  <main>
-    <section class="rewards-section">
-      <!-- App Download Section -->
-      <div class="app-download">
-        <div class="app-content">
-          <h2>Download Our App</h2>
-          <p>Get exclusive rewards and track your points with the MR.COFFEE app</p>
-          <div class="app-buttons">
-            <a href="#" class="app-btn">
-              <img src="../images/appstore.png" alt="Download on App Store" />
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <a href="../index.html" class="logo">
+                <img src="../images/logo copy.png" alt="MR.COFFEE Logo">
+                <div class="logo-text-group">
+                    <h1>MR.COFFEE</h1>
+                    <span class="logo-tagline">Specialty Roasters</span>
+                </div>
             </a>
-            <a href="#" class="app-btn">
-              <img src="../images/gplaystore.png" alt="Get it on Google Play" />
-            </a>
-          </div>
-        </div>
-        <div class="app-image">
-          <img src="../images/logo copy.png" alt="MR.COFFEE App" />
-        </div>
-      </div>
 
-      <!-- Rewards Grid -->
-      <div class="rewards-grid">
-        <div class="reward-card">
-          <img src="../images/buy1get1.jpg" alt="Buy 1 Get 1 Free" />
-          <div class="reward-content">
-            <h3>Buy 1 Get 1 Free</h3>
-            <p>Every Monday, enjoy our signature drinks with a friend!</p>
-            <button class="reward-btn" onclick="showAppDownload()">Get Reward</button>
-          </div>
-        </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="rewards.html" class="active">Rewards</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="order.html">Order Online</a></li>
+            </ul>
 
-        <div class="reward-card">
-          <img src="../images/pastry.jpg" alt="Free Pastry" />
-          <div class="reward-content">
-            <h3>Free Pastry</h3>
-            <p>Get a free pastry with any coffee purchase on weekends!</p>
-            <button class="reward-btn" onclick="showAppDownload()">Get Reward</button>
-          </div>
-        </div>
+            <div class="nav-actions">
+                <button class="cart-trigger-btn" aria-label="Lihat Keranjang">
+                    <span>☕ Keranjang</span>
+                    <span class="cart-badge">0</span>
+                </button>
+                <button class="hamburger" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
 
-        <div class="reward-card">
-          <img src="../images/happyhour.jpg" alt="Happy Hour" />
-          <div class="reward-content">
-            <h3>Happy Hour</h3>
-            <p>20% off on all drinks from 3 PM to 5 PM on weekdays!</p>
-            <button class="reward-btn" onclick="showAppDownload()">Get Reward</button>
-          </div>
+    <main class="rewards-page-wrapper">
+        <!-- Header -->
+        <div class="rewards-header-block">
+            <span class="section-kicker">EXCLUSIVE PERKS & SPECIAL VOUCHERS</span>
+            <h1>Loyalty & Coffee Perks</h1>
+            <p>Setiap cangkir kopi yang Anda nikmati membawa Anda lebih dekat ke berbagai reward istimewa dan promo eksklusif.</p>
         </div>
 
-        <div class="reward-card">
-          <img src="../images/birthday.jpg" alt="Birthday Special" />
-          <div class="reward-content">
-            <h3>Birthday Special</h3>
-            <p>Get a free drink and pastry on your birthday!</p>
-            <button class="reward-btn" onclick="showAppDownload()">Get Reward</button>
-          </div>
+        <!-- Loyalty Tier Progression Card -->
+        <div class="loyalty-club-card">
+            <div class="club-info">
+                <h3>Silver Bean Member</h3>
+                <p>Kumpulkan 1 Bean untuk setiap kelipatan Rp 10.000 belanja. Tukarkan poin dengan free manual brew atau pastry pilihan.</p>
+                <div class="tier-pills-row">
+                    <span class="tier-pill">Bronze (0)</span>
+                    <span class="tier-pill current">Silver (65 Beans)</span>
+                    <span class="tier-pill">Gold (150+)</span>
+                </div>
+            </div>
+            <div class="tier-progress-box">
+                <div class="progress-header">
+                    <span>Progres Menuju Gold Tier</span>
+                    <strong>65 / 100 Beans</strong>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill"></div>
+                </div>
+                <p class="progress-subtext">35 Beans lagi untuk mendapatkan Free Coffee Refill & Birthday Box spesial.</p>
+            </div>
         </div>
 
-        <div class="reward-card">
-          <img src="../images/studentdiscount.png" alt="Student Discount" />
-          <div class="reward-content">
-            <h3>Student Discount</h3>
-            <p>15% off on all items with a valid student ID!</p>
-            <button class="reward-btn" onclick="showAppDownload()">Get Reward</button>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+        <!-- Voucher Cards Grid -->
+        <div class="vouchers-grid">
+            <!-- Voucher 1 -->
+            <div class="voucher-ticket-card">
+                <div class="voucher-img-header">
+                    <span class="voucher-badge">Setiap Senin</span>
+                    <img src="../images/buy1get1.jpg" alt="Buy 1 Get 1 Free">
+                </div>
+                <div class="voucher-body">
+                    <h3>Buy 1 Get 1 Free Monday</h3>
+                    <p>Beli 1 signature drink apa saja dan dapatkan 1 cup Americano atau Cappuccino gratis untuk rekan Anda setiap hari Senin.</p>
+                    <div class="voucher-code-strip">
+                        <span class="voucher-code-val">COFFEEDUO</span>
+                        <button class="btn-copy-voucher" onclick="copyVoucher('COFFEEDUO', this)">Salin Kode</button>
+                    </div>
+                    <div class="voucher-card-footer">
+                        <button class="btn-secondary" onclick="showAppDownload()">Detail S&K</button>
+                        <button class="btn-primary" onclick="redeemVoucher('COFFEEDUO')">Pakai Sekarang</button>
+                    </div>
+                </div>
+            </div>
 
-  <footer>
-    <div class="footer-content">
-      <div class="footer-section">
-        <h3>MR.COFFEE</h3>
-        <p>Making all taste coffee every day</p>
-      </div>
-      <div class="footer-section">
-        <h3>Contact Us</h3>
-        <p>Email: info@mrcoffee.com</p>
-        <p>Phone: (123) 456-7890</p>
-      </div>
-      <div class="footer-section">
-        <h3>Follow Us</h3>
-        <div class="social-links">
-          <a href="#">Instagram</a>
-          <a href="#">Facebook</a>
-          <a href="#">Twitter</a>
+            <!-- Voucher 2 -->
+            <div class="voucher-ticket-card">
+                <div class="voucher-img-header">
+                    <span class="voucher-badge">Weekend Only</span>
+                    <img src="../images/pastry.jpg" alt="Free Pastry">
+                </div>
+                <div class="voucher-body">
+                    <h3>Free Butter Croissant</h3>
+                    <p>Dapatkan 1 French Butter Croissant gratis untuk setiap pembelian 2 cup manual brew V60 atau Japanese Iced Coffee di akhir pekan.</p>
+                    <div class="voucher-code-strip">
+                        <span class="voucher-code-val">SWEETWEEKEND</span>
+                        <button class="btn-copy-voucher" onclick="copyVoucher('SWEETWEEKEND', this)">Salin Kode</button>
+                    </div>
+                    <div class="voucher-card-footer">
+                        <button class="btn-secondary" onclick="showAppDownload()">Detail S&K</button>
+                        <button class="btn-primary" onclick="redeemVoucher('SWEETWEEKEND')">Pakai Sekarang</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Voucher 3 -->
+            <div class="voucher-ticket-card">
+                <div class="voucher-img-header">
+                    <span class="voucher-badge">15.00 - 17.00 WIB</span>
+                    <img src="../images/happyhour.jpg" alt="Happy Hour">
+                </div>
+                <div class="voucher-body">
+                    <h3>Happy Hour 20% Off</h3>
+                    <p>Recharge sore hari Anda lebih hemat! Diskon 20% untuk semua menu cold brew dan ice blended setiap hari kerja.</p>
+                    <div class="voucher-code-strip">
+                        <span class="voucher-code-val">AFTERNOON20</span>
+                        <button class="btn-copy-voucher" onclick="copyVoucher('AFTERNOON20', this)">Salin Kode</button>
+                    </div>
+                    <div class="voucher-card-footer">
+                        <button class="btn-secondary" onclick="showAppDownload()">Detail S&K</button>
+                        <button class="btn-primary" onclick="redeemVoucher('AFTERNOON20')">Pakai Sekarang</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Voucher 4 -->
+            <div class="voucher-ticket-card">
+                <div class="voucher-img-header">
+                    <span class="voucher-badge">Spesial Ulang Tahun</span>
+                    <img src="../images/birthday.jpg" alt="Birthday Special">
+                </div>
+                <div class="voucher-body">
+                    <h3>Birthday Coffee Treat</h3>
+                    <p>Rayakan hari spesial Anda bersama MR.COFFEE! Dapatkan 1 free signature beverage dan slice cake pilihan di bulan ulang tahun Anda.</p>
+                    <div class="voucher-code-strip">
+                        <span class="voucher-code-val">BDAYBREW</span>
+                        <button class="btn-copy-voucher" onclick="copyVoucher('BDAYBREW', this)">Salin Kode</button>
+                    </div>
+                    <div class="voucher-card-footer">
+                        <button class="btn-secondary" onclick="showAppDownload()">Detail S&K</button>
+                        <button class="btn-primary" onclick="redeemVoucher('BDAYBREW')">Klaim Treat</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Voucher 5 -->
+            <div class="voucher-ticket-card">
+                <div class="voucher-img-header">
+                    <span class="voucher-badge">Pelajar & Mahasiswa</span>
+                    <img src="../images/studentdiscount.png" alt="Student Discount">
+                </div>
+                <div class="voucher-body">
+                    <h3>Student Discount 15%</h3>
+                    <p>Teman nugas terbaik! Tunjukkan kartu pelajar atau KTM aktif Anda di kasir atau masukkan kode promo untuk potongan 15%.</p>
+                    <div class="voucher-code-strip">
+                        <span class="voucher-code-val">STUDENT15</span>
+                        <button class="btn-copy-voucher" onclick="copyVoucher('STUDENT15', this)">Salin Kode</button>
+                    </div>
+                    <div class="voucher-card-footer">
+                        <button class="btn-secondary" onclick="showAppDownload()">Detail S&K</button>
+                        <button class="btn-primary" onclick="redeemVoucher('STUDENT15')">Pakai Sekarang</button>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+
+        <!-- App Download Mockup Banner -->
+        <div class="app-download-banner">
+            <div class="app-banner-content">
+                <h2>Download MR.COFFEE App</h2>
+                <p>Nikmati kemudahan pesan tanpa antre, lacak poin loyalty secara real-time, dan dapatkan promo rahasia mingguan langsung dari ponsel Anda.</p>
+                <div class="app-store-btns">
+                    <a href="#" class="app-store-btn" onclick="showAppDownload()">
+                        <img src="../images/appstore.png" alt="Download on App Store">
+                    </a>
+                    <a href="#" class="app-store-btn" onclick="showAppDownload()">
+                        <img src="../images/gplaystore.png" alt="Get it on Google Play">
+                    </a>
+                </div>
+            </div>
+            <div class="app-banner-visual">
+                <div class="qr-code-placeholder">📱</div>
+                <p><strong>Scan QR Code</strong> untuk unduh aplikasi instan di iOS atau Android.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- App Download Modal -->
+    <div id="appDownloadModal" class="rewards-modal-overlay">
+        <div class="rewards-modal-card">
+            <button class="close-btn" onclick="closeAppDownload()">&times;</button>
+            <div style="font-size: 2.8rem; margin-bottom: 0.6rem;">☕</div>
+            <h3 style="color:var(--primary-color); margin-bottom:0.5rem;">MR.COFFEE Mobile App</h3>
+            <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.5rem;">
+                Unduh aplikasi MR.COFFEE untuk mengaktifkan voucher, melacak saldo Bean, dan menikmati fitur Order-Ahead.
+            </p>
+            <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-bottom:1.2rem;">
+                <img src="../images/appstore.png" alt="App Store" style="height:42px;">
+                <img src="../images/gplaystore.png" alt="Play Store" style="height:42px;">
+            </div>
+            <button class="btn-secondary" style="width:100%;" onclick="closeAppDownload()">Tutup Jendela</button>
+        </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 MR.COFFEE. All rights reserved.</p>
-    </div>
-  </footer>
 
-  <!-- Modal -->
-  <div id="appDownloadModal" class="modal">
-    <div class="modal-content">
-      <span class="close-modal">&times;</span>
-      <h3>Download Our App</h3>
-      <p>To get this reward, please download our app first!</p>
-      <div class="app-buttons">
-        <a href="#" class="app-btn">
-          <img src="../images/appstore.png" alt="Download on App Store" />
-        </a>
-        <a href="#" class="app-btn">
-          <img src="../images/gplaystore.png" alt="Get it on Google Play" />
-        </a>
-      </div>
-    </div>
-  </div>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>MR.COFFEE</h3>
+                <p>Specialty coffee roastery & cafe modern yang berkomitmen menghadirkan pengalaman kopi bernutrisi dan bermakna untuk semua penikmat kopi.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Navigasi</h4>
+                <ul class="footer-nav-list">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="menu.html">Katalog Menu</a></li>
+                    <li><a href="rewards.html">Voucher & Rewards</a></li>
+                    <li><a href="about.html">Tentang Kami</a></li>
+                    <li><a href="order.html">Order Online</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Kontak Kafe</h4>
+                <p>📍 Jl. Senopati No. 42, Kebayoran Baru, Jakarta Selatan</p>
+                <p>📞 (021) 555-0199</p>
+                <p>✉️ hello@mrcoffee.id</p>
+            </div>
+            <div class="footer-section">
+                <h4>Ikuti Komunitas</h4>
+                <div class="social-links">
+                    <a href="#" class="social-icon-btn" title="Instagram">IG</a>
+                    <a href="#" class="social-icon-btn" title="TikTok">TT</a>
+                    <a href="#" class="social-icon-btn" title="Twitter / X">X</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 MR.COFFEE Roastery. Hak Cipta Dilindungi.</span>
+            <span>Crafted with love & coffee beans.</span>
+        </div>
+    </footer>
 
-  <script src="../js/rewards.js"></script>
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+    <script src="../js/rewards.js"></script>
 </body>
 </html>

@@ -1,184 +1,400 @@
+/* ==========================================================================
+   MR.COFFEE - REWARDS & LOYALTY CLUB STYLES & MOTION
+   Tone Colors Preserved:
+   Primary: #4A2C2A (Espresso), Accent: #8B4513 (Warm Caramel), BG: #FCFAF6
+   ========================================================================== */
 
-.rewards-section {
-  padding: 4rem 5%;
-  background-color: #f9f9f9;
-  font-family: 'Poppins', sans-serif;
+.rewards-page-wrapper {
+    padding: 8rem 6% 6rem;
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+.rewards-header-block {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 3.5rem;
+}
+
+.rewards-header-block .section-kicker {
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.rewards-header-block h1 {
+    font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+    color: var(--primary-color);
+    margin-bottom: 0.8rem;
+}
+
+.rewards-header-block p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+}
+
+/* Loyalty Tier Bar */
+.loyalty-club-card {
+    background: linear-gradient(135deg, var(--primary-deep) 0%, var(--primary-color) 100%);
+    color: #fff;
+    border-radius: var(--radius-lg);
+    padding: 2.5rem 3rem;
+    margin-bottom: 4rem;
+    box-shadow: var(--shadow-hover);
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 3rem;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.loyalty-club-card::after {
+    content: '';
+    position: absolute;
+    right: -50px;
+    top: -50px;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(198, 139, 89, 0.2) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.club-info h3 {
+    color: #fff;
+    font-size: 1.8rem;
+    margin-bottom: 0.4rem;
+}
+
+.club-info p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+}
+
+.tier-pills-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.tier-pill {
+    padding: 0.35rem 0.9rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.tier-pill.current {
+    background: var(--accent-gold);
+    color: #fff;
+}
+
+.tier-progress-box {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 1.6rem;
+    border-radius: var(--radius-md);
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.88rem;
+    margin-bottom: 0.8rem;
+}
+
+.progress-track {
+    width: 100%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+    margin-bottom: 0.8rem;
+}
+
+.progress-fill {
+    width: 65%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-gold), #ECC695);
+    border-radius: var(--radius-pill);
+    transition: width 1s ease-in-out;
+}
+
+.progress-subtext {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
+
+/* Vouchers Grid */
+.vouchers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2.2rem;
+    margin-bottom: 4.5rem;
+}
+
+.voucher-ticket-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-subtle);
+    border: 1px solid var(--border-subtle);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+.voucher-ticket-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--border-accent);
+}
+
+.voucher-img-header {
+    height: 180px;
+    overflow: hidden;
+    position: relative;
+}
+
+.voucher-img-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.voucher-ticket-card:hover .voucher-img-header img {
+    transform: scale(1.06);
+}
+
+.voucher-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(42, 23, 19, 0.85);
+    backdrop-filter: blur(8px);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--radius-pill);
+}
+
+.voucher-body {
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.voucher-body h3 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 0.4rem;
+}
+
+.voucher-body p {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 1.4rem;
+    flex-grow: 1;
+}
+
+.voucher-code-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg-surface);
+    border: 1.5px dashed var(--accent-color);
+    padding: 0.6rem 1rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 1.2rem;
+}
+
+.voucher-code-val {
+    font-family: monospace;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--accent-color);
+    letter-spacing: 0.08em;
+}
+
+.btn-copy-voucher {
+    background: none;
+    border: none;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    transition: var(--transition-smooth);
+}
+
+.btn-copy-voucher:hover {
+    background: var(--accent-soft);
+    color: var(--accent-color);
+}
+
+.voucher-card-footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
 }
 
 /* App Download Section */
-.app-download {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: 4rem;
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+.app-download-banner {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-subtle);
+    border: 1px solid var(--border-subtle);
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 3rem;
+    align-items: center;
 }
 
-.app-content {
-  flex: 1 1 300px;
-  padding-right: 2rem;
+.app-banner-content h2 {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.8rem;
 }
 
-.app-content h2 {
-  font-size: 1.8rem;
-  color: #4A2C2A;
-  margin-bottom: 1rem;
+.app-banner-content p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 1.8rem;
 }
 
-.app-content p {
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
+.app-store-btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
-.app-buttons {
-  display: flex;
-  gap: 1rem;
+.app-store-btn img {
+    height: 44px;
+    width: auto;
+    border-radius: var(--radius-sm);
+    transition: transform 0.3s ease;
 }
 
-.app-btn img {
-  width: 150px;
-  height: auto;
+.app-store-btn:hover img {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.app-image {
-  flex: 0 0 300px;
-  text-align: center;
-}
-
-.app-image img {
-  width: 200px;
-  height: auto;
-}
-
-
-.rewards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-}
-
-/* Reward Card */
-.reward-card {
-  background-color: #fff;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-  display: flex;
-  flex-direction: column;
-}
-
-.reward-card:hover {
-  transform: translateY(-5px);
-}
-
-.reward-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.reward-content {
-  padding: 1rem;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.reward-content h3 {
-  font-size: 1.1rem;
-  color: #4A2C2A;
-  margin-bottom: 0.5rem;
-}
-
-.reward-content p {
-  font-size: 0.95rem;
-  color: #666;
-  margin-bottom: 1rem;
-}
-
-.reward-btn {
-  background-color: #8B4513;
-  color: white;
-  border: none;
-  padding: 0.6rem 1rem;
-  font-size: 0.9rem;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.reward-btn:hover {
-  background-color: #6B3410;
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  width: 90%;
-  max-width: 400px;
-  text-align: center;
-}
-
-.modal-content h3 {
-  margin-bottom: 1rem;
-  color: #4A2C2A;
-}
-
-.modal-content p {
-  margin-bottom: 1.5rem;
-  color: #333;
-}
-
-.modal-content .app-buttons {
-  justify-content: center;
-}
-
-.close-modal {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-/* Responsive tes */
-@media screen and (max-width: 768px) {
-  .app-download {
+.app-banner-visual {
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-surface);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    border: 1px dashed var(--border-accent);
     text-align: center;
-    padding: 2rem 1rem;
-  }
+}
 
-  .app-content {
-    padding: 0;
-    margin-bottom: 2rem;
-  }
+.qr-code-placeholder {
+    width: 140px;
+    height: 140px;
+    background: #fff;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    margin-bottom: 0.8rem;
+    box-shadow: var(--shadow-subtle);
+}
 
-  .app-image img {
-    width: 80px;
-  }
+.app-banner-visual p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+}
 
-  .reward-card img {
-    height: 160px;
-  }
+/* Modal */
+.rewards-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(42, 23, 19, 0.7);
+    backdrop-filter: blur(6px);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition-smooth);
+    padding: 1.5rem;
+}
+
+.rewards-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.rewards-modal-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    max-width: 440px;
+    width: 100%;
+    padding: 2.2rem 2rem;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    transform: translateY(20px) scale(0.95);
+    transition: var(--transition-bounce);
+    position: relative;
+}
+
+.rewards-modal-overlay.active .rewards-modal-card {
+    transform: translateY(0) scale(1);
+}
+
+.rewards-modal-card .close-btn {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 900px) {
+    .loyalty-club-card {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+    }
+    
+    .app-download-banner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 2rem;
+    }
+    
+    .app-store-btns {
+        justify-content: center;
+    }
 }

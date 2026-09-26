@@ -1,203 +1,563 @@
-.order-section {
-    padding: 8rem 5% 5rem;
-}
+/* ==========================================================================
+   MR.COFFEE - ORDER & CHECKOUT STYLES & MOTION
+   Tone Colors Preserved:
+   Primary: #4A2C2A (Espresso), Accent: #8B4513 (Warm Caramel), BG: #FCFAF6
+   ========================================================================== */
 
-.order-section h2 {
-    text-align: center;
-    color: #4A2C2A;
-    margin-bottom: 3rem;
-    font-size: 2.5rem;
-}
-
-.order-form {
-    max-width: 800px;
+.order-page-wrapper {
+    padding: 8rem 6% 6rem;
+    max-width: 1240px;
     margin: 0 auto;
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-.form-group {
-    margin-bottom: 1.5rem;
+.order-header-block {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 3rem;
 }
 
-.form-group label {
-    display: block;
+.order-header-block .section-kicker {
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    font-weight: 700;
     margin-bottom: 0.5rem;
-    color: #4A2C2A;
-    font-weight: 500;
+    display: inline-block;
 }
 
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-family: 'Poppins', sans-serif;
+.order-header-block h1 {
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    color: var(--primary-color);
+    margin-bottom: 0.6rem;
+}
+
+.order-header-block p {
+    color: var(--text-muted);
     font-size: 1rem;
 }
 
-.form-group textarea {
-    height: 100px;
+/* Two-Column Grid */
+.order-layout-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+/* Form Panel */
+.order-form-panel {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-subtle);
+}
+
+.form-section-title {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Fulfillment Type Selector (Dine-in / Takeaway / Delivery) */
+.fulfillment-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.fulfillment-card {
+    border: 1.5px solid var(--border-subtle);
+    background: var(--bg-color);
+    padding: 1.1rem 0.8rem;
+    border-radius: var(--radius-md);
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.fulfillment-card:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 44, 42, 0.08);
+}
+
+.fulfillment-card.active {
+    border-color: var(--accent-color);
+    background-color: var(--accent-soft);
+    color: var(--accent-color);
+}
+
+.fulfillment-icon {
+    font-size: 1.6rem;
+}
+
+.fulfillment-label {
+    font-size: 0.86rem;
+    font-weight: 600;
+}
+
+/* Quick Item Picker Grid */
+.order-item-picker {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 0.9rem;
+    margin-bottom: 2rem;
+    max-height: 380px;
+    overflow-y: auto;
+    padding-right: 6px;
+}
+
+.picker-card {
+    border: 1.5px solid var(--border-subtle);
+    background: #fff;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.picker-card:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.picker-card.selected {
+    border-color: var(--accent-color);
+    background-color: var(--accent-soft);
+}
+
+.picker-card img {
+    width: 100%;
+    height: 90px;
+    object-fit: cover;
+}
+
+.picker-card-info {
+    padding: 0.6rem;
+    text-align: center;
+}
+
+.picker-card-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.picker-card-price {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+.picker-card-badge {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 20px;
+    height: 20px;
+    background: var(--accent-color);
+    color: #fff;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+/* Add-ons Checkboxes */
+.addons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+}
+
+.addon-pill {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    background: var(--bg-color);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.addon-pill:hover {
+    border-color: var(--accent-color);
+}
+
+.addon-pill.active {
+    border-color: var(--accent-color);
+    background-color: var(--accent-soft);
+}
+
+.addon-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.86rem;
+    font-weight: 500;
+}
+
+.addon-pill input[type="checkbox"] {
+    accent-color: var(--accent-color);
+    width: 16px;
+    height: 16px;
+}
+
+.addon-price-tag {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+/* Form Fields */
+.form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+}
+
+.form-group-field {
+    margin-bottom: 1.3rem;
+}
+
+.form-group-field label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.form-group-field input,
+.form-group-field textarea,
+.form-group-field select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1.5px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    background: var(--bg-color);
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    color: var(--text-main);
+    outline: none;
+    transition: var(--transition-smooth);
+}
+
+.form-group-field input:focus,
+.form-group-field textarea:focus,
+.form-group-field select:focus {
+    background: #fff;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+.form-group-field textarea {
+    height: 80px;
     resize: vertical;
 }
 
-.error-message {
-    color: #dc3545;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-    display: none;
-}
-
-.error-message.show {
-    display: block;
-}
-
-.items-grid {
+/* Payment Method Selection */
+.payment-methods-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
 }
 
-.item-card {
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    overflow: hidden;
+.payment-card {
+    border: 1.5px solid var(--border-subtle);
+    padding: 0.8rem 0.6rem;
+    border-radius: var(--radius-md);
     text-align: center;
-    padding: 1rem;
-    background-color: #fff;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    background: var(--bg-color);
+    transition: var(--transition-smooth);
 }
 
-.item-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
-    border-color: #8B4513;
+.payment-card:hover {
+    border-color: var(--accent-color);
 }
 
-.item-card.selected {
-    border: 2px solid #8B4513;
-    background-color: #fef4ec;
-}
-
-.item-card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 0.75rem;
-}
-
-.item-card h4 {
-    margin: 0.5rem 0 0.3rem;
-    color: #4A2C2A;
-    font-size: 1.1rem;
-}
-
-.item-card .price {
-    color: #8B4513;
+.payment-card.active {
+    border-color: var(--accent-color);
+    background-color: var(--accent-soft);
+    color: var(--accent-color);
     font-weight: 600;
-    font-size: 0.95rem;
 }
 
-.addons {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
+.payment-icon {
+    font-size: 1.4rem;
+    margin-bottom: 4px;
 }
 
-.checkbox-label {
+.payment-label {
+    font-size: 0.8rem;
+}
+
+/* Sticky Receipt Summary Column */
+.order-summary-sticky {
+    position: sticky;
+    top: 90px;
+}
+
+.receipt-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-hover);
+    border: 1px solid var(--border-subtle);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Perforated top receipt bar */
+.receipt-header {
+    background: var(--primary-deep);
+    color: #fff;
+    padding: 1.6rem 1.8rem;
+    text-align: center;
+    position: relative;
+}
+
+.receipt-header h3 {
+    color: #fff;
+    font-size: 1.35rem;
+    margin-bottom: 2px;
+}
+
+.receipt-header p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.receipt-body {
+    padding: 1.8rem;
+}
+
+.receipt-items-list {
+    margin-bottom: 1.4rem;
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+.receipt-item-row {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
+    padding: 0.7rem 0;
+    border-bottom: 1px dashed var(--border-subtle);
+    font-size: 0.9rem;
 }
 
-.checkbox-label input[type="checkbox"] {
-    width: auto;
+.receipt-item-info {
+    flex: 1;
 }
 
-.order-summary {
-    background-color: #f9f9f9;
-    padding: 1.5rem;
-    border-radius: 5px;
-    margin: 2rem 0;
-}
-
-.order-summary h3 {
-    color: #4A2C2A;
-    margin-bottom: 1rem;
-}
-
-.summary-items {
-    margin-bottom: 1rem;
-}
-
-.summary-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
-}
-
-.total {
-    display: flex;
-    justify-content: space-between;
+.receipt-item-name {
     font-weight: 600;
-    font-size: 1.2rem;
-    color: #4A2C2A;
-    padding-top: 1rem;
-    border-top: 1px solid #ddd;
+    color: var(--primary-color);
 }
 
-.submit-btn {
-    display: block;
-    width: 100%;
-    padding: 1rem;
-    background-color: #8B4513;
+.receipt-item-meta {
+    font-size: 0.78rem;
+    color: var(--text-light);
+}
+
+.receipt-item-price {
+    font-weight: 700;
+    color: var(--text-main);
+    margin-left: 12px;
+}
+
+/* Promo Voucher Form */
+.receipt-promo-box {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.promo-input {
+    flex: 1;
+    padding: 0.65rem 0.9rem;
+    border: 1.5px dashed var(--accent-color);
+    border-radius: var(--radius-md);
+    font-size: 0.86rem;
+    background: var(--bg-color);
+    text-transform: uppercase;
+    font-weight: 600;
+    outline: none;
+}
+
+.btn-apply-promo {
+    padding: 0.65rem 1rem;
+    background: var(--accent-color);
     color: #fff;
     border: none;
-    border-radius: 5px;
-    font-size: 1.1rem;
-    font-weight: 500;
+    border-radius: var(--radius-md);
+    font-size: 0.82rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: var(--transition-smooth);
 }
 
-.submit-btn:hover {
-    background-color: #6B3410;
+.btn-apply-promo:hover {
+    background: var(--accent-hover);
 }
 
-/* Responsive tes */
-@media screen and (max-width: 768px) {
-    .order-section {
-        padding: 6rem 3% 3rem;
-    }
-
-    .order-form {
-        padding: 1.5rem;
-    }
-
-    .items-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+/* Calculation breakdown */
+.receipt-calculations {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    font-size: 0.88rem;
+    margin-bottom: 1.5rem;
 }
 
-@media screen and (max-width: 480px) {
-    .order-section h2 {
-        font-size: 2rem;
-    }
+.calc-row {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-muted);
+}
 
-    .items-grid {
+.calc-row.discount-row {
+    color: #2D6A4F;
+    font-weight: 600;
+}
+
+.calc-row.grand-total-row {
+    padding-top: 1rem;
+    border-top: 2px solid var(--primary-color);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-top: 0.4rem;
+}
+
+.btn-submit-order {
+    width: 100%;
+    padding: 1.05rem;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* Order Success Modal */
+.order-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(42, 23, 19, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition-smooth);
+    padding: 1.5rem;
+}
+
+.order-modal-backdrop.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.order-modal-content {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    max-width: 480px;
+    width: 100%;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transform: translateY(20px) scale(0.95);
+    transition: var(--transition-bounce);
+}
+
+.order-modal-backdrop.active .order-modal-content {
+    transform: translateY(0) scale(1);
+}
+
+.modal-success-badge {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: #2D6A4F;
+    color: #fff;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.4rem;
+    box-shadow: 0 10px 25px rgba(45, 106, 79, 0.3);
+    animation: badgeBounce 0.6s ease;
+}
+
+.order-modal-content h3 {
+    font-size: 1.6rem;
+    margin-bottom: 0.4rem;
+}
+
+.order-modal-content p {
+    font-size: 0.92rem;
+    margin-bottom: 1.5rem;
+}
+
+.ticket-receipt-preview {
+    background: var(--bg-surface);
+    border: 1px dashed var(--accent-color);
+    padding: 1.2rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 1.8rem;
+    text-align: left;
+    font-size: 0.85rem;
+}
+
+.ticket-preview-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
+}
+
+@media screen and (max-width: 900px) {
+    .order-layout-grid {
         grid-template-columns: 1fr;
     }
-
-    .addons {
+    
+    .order-form-panel {
+        padding: 1.8rem;
+    }
+    
+    .form-row-2 {
         grid-template-columns: 1fr;
     }
-} 
+}

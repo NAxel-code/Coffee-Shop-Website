@@ -1,164 +1,277 @@
-.about-section {
-    padding: 8rem 5% 5rem;
+/* ==========================================================================
+   MR.COFFEE - ABOUT US & BRAND STORY STYLES & MOTION
+   Tone Colors Preserved:
+   Primary: #4A2C2A (Espresso), Accent: #8B4513 (Warm Caramel), BG: #FCFAF6
+   ========================================================================== */
+
+.about-page-wrapper {
+    padding: 8.5rem 6% 6rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.ceo-section {
-  background: #fefefe;
-  padding: 4rem 5%;
-}
-
-.ceo-content {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 2rem;
-}
-
-.ceo-content img {
-  width: 250px;
-  height: auto;
-  border-radius: 10px;
-  object-fit: cover;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.ceo-info {
-  flex: 1;
-}
-
-.ceo-info h2 {
-  font-size: 2rem;
-  color: #4A2C2A;
-  margin-bottom: 0.5rem;
-}
-
-.ceo-info .title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #8B4513;
-  margin-bottom: 1rem;
-}
-
-.ceo-info .story {
-  font-size: 1rem;
-  color: #555;
-  line-height: 1.6;
-}
-
-.mission-section,
-.vision-section,
-.story-section {
-    max-width: 1000px;
-    margin: 0 auto 5rem;
-    padding: 3rem;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.mission-section h2,
-.vision-section h2,
-.story-section h2 {
-    color: #4A2C2A;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
+.about-hero-block {
     text-align: center;
+    max-width: 720px;
+    margin: 0 auto 4.5rem;
 }
 
-.mission-section p,
-.vision-section p,
-.story-section p {
-    color: #666;
-    line-height: 1.8;
-    font-size: 1.1rem;
+.about-hero-block .section-kicker {
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.about-hero-block h1 {
+    font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    line-height: 1.15;
+}
+
+.about-hero-block p {
+    font-size: 1.08rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+/* Founder Editorial Feature */
+.founder-editorial-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-hover);
+    border: 1px solid var(--border-subtle);
+    padding: 3.5rem;
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-bottom: 5rem;
+    position: relative;
+}
+
+.founder-img-col {
+    position: relative;
+}
+
+.founder-frame {
+    position: relative;
+    border-radius: calc(var(--radius-lg) - 4px);
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(74, 44, 42, 0.15);
+}
+
+.founder-frame img {
+    width: 100%;
+    height: 440px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.founder-editorial-card:hover .founder-frame img {
+    transform: scale(1.03);
+}
+
+.founder-gold-tag {
+    position: absolute;
+    bottom: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-deep);
+    color: var(--accent-gold);
+    border: 1px solid var(--accent-gold);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.4rem 1.1rem;
+    border-radius: var(--radius-pill);
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.founder-text-col h2 {
+    font-size: 2.2rem;
+    margin-bottom: 0.3rem;
+}
+
+.founder-subtitle {
+    color: var(--accent-color);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
     margin-bottom: 1.5rem;
 }
 
-.story-section p:last-child {
+.founder-bio p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+}
+
+.founder-signature {
+    margin-top: 1.8rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--border-subtle);
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--primary-color);
+}
+
+/* Farm to Cup Visual Process */
+.process-section {
+    margin-bottom: 5.5rem;
+}
+
+.process-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+
+.process-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.8rem;
+}
+
+.process-step-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    padding: 2.2rem 1.8rem;
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-subtle);
+    transition: var(--transition-smooth);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.process-step-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--border-accent);
+}
+
+.step-num-badge {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: rgba(139, 69, 19, 0.15);
+}
+
+.step-icon-wrap {
+    width: 52px;
+    height: 52px;
+    background: var(--accent-soft);
+    color: var(--accent-color);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin-bottom: 1.4rem;
+}
+
+.process-step-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.6rem;
+}
+
+.process-step-card p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+/* Mission & Vision Split */
+.mission-vision-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    margin-bottom: 5rem;
+}
+
+.mv-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    padding: 3rem;
+    box-shadow: var(--shadow-subtle);
+    border: 1px solid var(--border-subtle);
+    transition: var(--transition-smooth);
+}
+
+.mv-card:hover {
+    border-color: var(--border-accent);
+    box-shadow: var(--shadow-hover);
+}
+
+.mv-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mv-card p {
+    font-size: 1.02rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+}
+
+/* Cafe Story Section */
+.story-full-card {
+    background: linear-gradient(135deg, var(--bg-surface) 0%, #fff 100%);
+    border-radius: var(--radius-lg);
+    padding: 3.5rem;
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-subtle);
+    text-align: center;
+    max-width: 880px;
+    margin: 0 auto;
+}
+
+.story-full-card h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.4rem;
+}
+
+.story-full-card p {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+}
+
+.story-full-card p:last-child {
     margin-bottom: 0;
 }
 
-/* Animation */
-.mission-section,
-.vision-section,
-.story-section {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.5s ease forwards;
-}
-
-.mission-section {
-    animation-delay: 0.2s;
-}
-
-.vision-section {
-    animation-delay: 0.4s;
-}
-
-.story-section {
-    animation-delay: 0.6s;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Responsive tes */
-@media screen and (max-width: 1024px) {
-    .ceo-content {
-        flex-direction: column;
+@media screen and (max-width: 900px) {
+    .founder-editorial-card {
+        grid-template-columns: 1fr;
+        padding: 2.2rem;
+        gap: 2.5rem;
         text-align: center;
-        gap: 2rem;
     }
-
-    .ceo-content img {
-        width: 300px;
-        height: 300px;
+    
+    .founder-frame {
+        max-width: 320px;
+        margin: 0 auto;
     }
-}
-
-@media screen and (max-width: 768px) {
-    .about-section {
-        padding: 6rem 3% 3rem;
-    }
-
-    .mission-section,
-    .vision-section,
-    .story-section {
-        padding: 2rem;
-    }
-
-    .ceo-info h2 {
-        font-size: 2rem;
-    }
-
-    .ceo-info .story {
-        font-size: 1rem;
+    
+    .mission-vision-grid {
+        grid-template-columns: 1fr;
     }
 }
-
-@media screen and (max-width: 480px) {
-    .ceo-content img {
-        width: 250px;
-        height: 250px;
-    }
-
-    .mission-section h2,
-    .vision-section h2,
-    .story-section h2 {
-        font-size: 1.8rem;
-    }
-
-    .mission-section p,
-    .vision-section p,
-    .story-section p {
-        font-size: 1rem;
-    }
-} 

@@ -1,81 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu - MR.COFFEE</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-    <link rel="stylesheet" href="../css/menu.css">
+    <title>Katalog Menu Kopi - MR.COFFEE</title>
+    <meta name="description" content="Jelajahi daftar menu lengkap MR.COFFEE mulai dari espresso klasik, manual brew V60, non-coffee creamy, hingga signature iced blends.">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/menu.css">
 </head>
 <body>
+    <!-- Navigation Bar -->
     <header>
         <nav class="navbar">
-            <div class="logo">
-                <h1>MR.COFFEE</h1>
-            </div>
+            <a href="../index.html" class="logo">
+                <img src="../images/logo copy.png" alt="MR.COFFEE Logo">
+                <div class="logo-text-group">
+                    <h1>MR.COFFEE</h1>
+                    <span class="logo-tagline">Specialty Roasters</span>
+                </div>
+            </a>
+
             <ul class="nav-links">
                 <li><a href="../index.html">Home</a></li>
+                <li><a href="menu.html" class="active">Menu</a></li>
                 <li><a href="rewards.html">Rewards</a></li>
                 <li><a href="about.html">About Us</a></li>
-                <li><a href="menu.html" class="active">Menu</a></li>
-                <li><a href="order.html">Order</a></li>
+                <li><a href="order.html">Order Online</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+
+            <div class="nav-actions">
+                <button class="cart-trigger-btn" aria-label="Lihat Keranjang">
+                    <span>☕ Keranjang</span>
+                    <span class="cart-badge">0</span>
+                </button>
+                <button class="hamburger" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </nav>
     </header>
 
     <main>
-                <section class="menu-section">
-        <h2>Our Menu</h2>
-        <div class="menu-filter">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="espresso">Espresso</button>
-            <button class="filter-btn" data-filter="brewed">Brewed</button>
-            <button class="filter-btn" data-filter="noncoffee">Non-Coffee</button>
-            <button class="filter-btn" data-filter="signature">Signature</button>
-            <button class="filter-btn" data-filter="blended">Blended</button>
-        </div>
+        <!-- Header & Search Controls -->
+        <section class="menu-page-header">
+            <span class="section-kicker">ARTISAN COFFEE & BEVERAGES</span>
+            <h1>Our Specialty Menu</h1>
+            <p>Setiap varian diseduh dengan standar rasio dan suhu presisi untuk menghasilkan harmoni rasa terbaik di setiap tegukan.</p>
 
-        <div class="menu-grid">
-            <!-- Menu di insert via JS -->
-        </div>
+            <div class="menu-controls-wrapper">
+                <!-- Search Box -->
+                <div class="menu-search-box">
+                    <span class="menu-search-icon">🔍</span>
+                    <input type="text" class="menu-search-input" placeholder="Cari nama kopi atau rasa favorit (contoh: V60, Matcha, Caramel)...">
+                </div>
+
+                <!-- Category Filter Bar -->
+                <div class="menu-filter-bar">
+                    <button class="filter-chip-btn active" data-filter="all">
+                        <span>Semua Menu</span>
+                        <span class="chip-count">13</span>
+                    </button>
+                    <button class="filter-chip-btn" data-filter="espresso">
+                        <span>Espresso Bar</span>
+                        <span class="chip-count">3</span>
+                    </button>
+                    <button class="filter-chip-btn" data-filter="brewed">
+                        <span>Manual & Cold Brew</span>
+                        <span class="chip-count">3</span>
+                    </button>
+                    <button class="filter-chip-btn" data-filter="signature">
+                        <span>Signature Craft</span>
+                        <span class="chip-count">2</span>
+                    </button>
+                    <button class="filter-chip-btn" data-filter="noncoffee">
+                        <span>Non-Coffee</span>
+                        <span class="chip-count">2</span>
+                    </button>
+                    <button class="filter-chip-btn" data-filter="blended">
+                        <span>Ice Blended</span>
+                        <span class="chip-count">3</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Menu Grid -->
+        <section class="menu-catalog-section">
+            <div class="menu-grid">
+                <!-- Rendered dynamically by js/menu.js -->
+            </div>
         </section>
     </main>
-z
 
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-section">
+            <div class="footer-brand">
                 <h3>MR.COFFEE</h3>
-                <p>Making all taste coffee every day</p>
+                <p>Specialty coffee roastery & cafe modern yang berkomitmen menghadirkan pengalaman kopi bernutrisi dan bermakna untuk semua penikmat kopi.</p>
             </div>
             <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>Email: info@mrcoffee.com</p>
-                <p>Phone: (123) 456-7890</p>
+                <h4>Navigasi</h4>
+                <ul class="footer-nav-list">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="menu.html">Katalog Menu</a></li>
+                    <li><a href="rewards.html">Voucher & Rewards</a></li>
+                    <li><a href="about.html">Tentang Kami</a></li>
+                    <li><a href="order.html">Order Online</a></li>
+                </ul>
             </div>
             <div class="footer-section">
-                <h3>Follow Us</h3>
+                <h4>Kontak Kafe</h4>
+                <p>📍 Jl. Senopati No. 42, Kebayoran Baru, Jakarta Selatan</p>
+                <p>📞 (021) 555-0199</p>
+                <p>✉️ hello@mrcoffee.id</p>
+            </div>
+            <div class="footer-section">
+                <h4>Ikuti Komunitas</h4>
                 <div class="social-links">
-                    <a href="#">Instagram</a>
-                    <a href="#">Facebook</a>
-                    <a href="#">Twitter</a>
+                    <a href="#" class="social-icon-btn" title="Instagram">IG</a>
+                    <a href="#" class="social-icon-btn" title="TikTok">TT</a>
+                    <a href="#" class="social-icon-btn" title="Twitter / X">X</a>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 MR.COFFEE. All rights reserved.</p>
+            <span>&copy; 2026 MR.COFFEE Roastery. Hak Cipta Dilindungi.</span>
+            <span>Crafted with love & coffee beans.</span>
         </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
     <script src="../js/menu.js"></script>
 </body>
-</html> 
+</html>

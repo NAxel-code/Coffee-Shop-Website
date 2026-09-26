@@ -1,135 +1,244 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order - MR.COFFEE</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-    <link rel="stylesheet" href="../css/order.css">
+    <title>Pesan Kopi Online - MR.COFFEE</title>
+    <meta name="description" content="Pesan kopi specialty MR.COFFEE secara online untuk Dine-in, Takeaway, atau Delivery dengan cepat, mudah, dan transparan.">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/order.css">
 </head>
 <body>
+    <!-- Navigation Bar -->
     <header>
         <nav class="navbar">
-            <div class="logo">
-                <h1>MR.COFFEE</h1>
-            </div>
+            <a href="../index.html" class="logo">
+                <img src="../images/logo copy.png" alt="MR.COFFEE Logo">
+                <div class="logo-text-group">
+                    <h1>MR.COFFEE</h1>
+                    <span class="logo-tagline">Specialty Roasters</span>
+                </div>
+            </a>
+
             <ul class="nav-links">
                 <li><a href="../index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
                 <li><a href="rewards.html">Rewards</a></li>
                 <li><a href="about.html">About Us</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="order.html" class="active">Order</a></li>
+                <li><a href="order.html" class="active">Order Online</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+
+            <div class="nav-actions">
+                <button class="cart-trigger-btn" aria-label="Lihat Keranjang">
+                    <span>☕ Keranjang</span>
+                    <span class="cart-badge">0</span>
+                </button>
+                <button class="hamburger" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </nav>
     </header>
 
-    <main>
-        <section class="order-section">
-            <h2>Place Your Order</h2>
-            <form id="orderForm" class="order-form">
-                <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" required>
-                    <span class="error-message"></span>
-                </div>
+    <main class="order-page-wrapper">
+        <!-- Page Header -->
+        <div class="order-header-block">
+            <span class="section-kicker">SEAMLESS CHECKOUT FLOW</span>
+            <h1>Pesan Kopi Favorit</h1>
+            <p>Pilih metode penyajian, sesuaikan add-on ekstra, dan nikmati racikan barista terbaik tanpa antre lama.</p>
+        </div>
 
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required>
-                    <span class="error-message"></span>
-                </div>
+        <!-- 2-Column Checkout Layout -->
+        <div class="order-layout-grid">
+            <!-- Left Column: Form & Configuration -->
+            <div class="order-form-panel">
+                <form id="checkoutForm">
+                    <!-- Step 1: Fulfillment Type -->
+                    <h3 class="form-section-title">
+                        <span>1.</span>
+                        <span>Metode Pemesanan</span>
+                    </h3>
+                    <div class="fulfillment-options">
+                        <div class="fulfillment-card active" data-type="dine-in">
+                            <span class="fulfillment-icon">☕</span>
+                            <span class="fulfillment-label">Dine-in (Di Kafe)</span>
+                        </div>
+                        <div class="fulfillment-card" data-type="takeaway">
+                            <span class="fulfillment-icon">🥡</span>
+                            <span class="fulfillment-label">Takeaway (Bungkus)</span>
+                        </div>
+                        <div class="fulfillment-card" data-type="delivery">
+                            <span class="fulfillment-icon">🛵</span>
+                            <span class="fulfillment-label">Delivery (Kirim)</span>
+                        </div>
+                    </div>
 
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" required>
-                    <span class="error-message"></span>
-                </div>
+                    <!-- Step 2: Quick Item Picker -->
+                    <h3 class="form-section-title">
+                        <span>2.</span>
+                        <span>Pilih / Tambah Menu Kopi</span>
+                    </h3>
+                    <p style="font-size:0.82rem; color:var(--text-light); margin-top:-8px; margin-bottom:12px;">
+                        Klik varian kopi di bawah untuk menambah ke dalam struk pesanan:
+                    </p>
+                    <div class="order-item-picker">
+                        <!-- Rendered by js/order.js -->
+                    </div>
 
-                <div class="form-group">
-                    <label for="address">Delivery Address</label>
-                    <textarea id="address" name="address" required></textarea>
-                    <span class="error-message"></span>
-                </div>
+                    <!-- Step 3: Add-ons & Extra Customization -->
+                    <h3 class="form-section-title">
+                        <span>3.</span>
+                        <span>Kustomisasi & Extra Topping</span>
+                    </h3>
+                    <div class="addons-grid">
+                        <!-- Rendered by js/order.js -->
+                    </div>
 
-                <div class="form-group">
-                    <label>Select Items</label>
-                    <div class="items-grid" id="itemsGrid">
+                    <!-- Step 4: Customer Details -->
+                    <h3 class="form-section-title">
+                        <span>4.</span>
+                        <span>Informasi Pelanggan</span>
+                    </h3>
+                    <div class="form-row-2">
+                        <div class="form-group-field">
+                            <label for="custName">Nama Lengkap *</label>
+                            <input type="text" id="custName" placeholder="Contoh: Axel Nicholas" required>
+                        </div>
+                        <div class="form-group-field">
+                            <label for="custPhone">No. WhatsApp / Telepon *</label>
+                            <input type="tel" id="custPhone" placeholder="0812-xxxx-xxxx" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group-field">
+                        <label id="locationLabel" for="locationInput">Nomor Meja Kafe</label>
+                        <input type="text" id="locationInput" placeholder="Contoh: Meja 04 atau Meja Bar">
+                    </div>
+
+                    <div class="form-group-field">
+                        <label for="custNotes">Catatan untuk Barista (Opsional)</label>
+                        <textarea id="custNotes" placeholder="Contoh: Less sweet, es batu dipisah, atau ekstra sedotan kertas..."></textarea>
+                    </div>
+
+                    <!-- Step 5: Payment Method -->
+                    <h3 class="form-section-title">
+                        <span>5.</span>
+                        <span>Metode Pembayaran</span>
+                    </h3>
+                    <div class="payment-methods-grid">
+                        <div class="payment-card active" data-method="qris">
+                            <div class="payment-icon">📱</div>
+                            <div class="payment-label">QRIS Instant</div>
+                        </div>
+                        <div class="payment-card" data-method="tunai">
+                            <div class="payment-icon">💵</div>
+                            <div class="payment-label">Tunai di Kasir</div>
+                        </div>
+                        <div class="payment-card" data-method="kartu">
+                            <div class="payment-icon">💳</div>
+                            <div class="payment-label">Debit / Kredit</div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Submit Button -->
+                    <button type="submit" class="btn-primary btn-submit-order" style="display:none;" id="mobileSubmitBtn">
+                        <span class="submit-btn-total-text">Konfirmasi Pesanan</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Right Column: Sticky Perforated Receipt -->
+            <div class="order-summary-sticky">
+                <div class="receipt-card">
+                    <div class="receipt-header">
+                        <h3>Ringkasan Pesanan</h3>
+                        <p>MR.COFFEE SPECIALTY ROASTERS</p>
+                    </div>
+                    <div class="receipt-body">
+                        <!-- Items List -->
+                        <div class="receipt-items-list">
+                            <!-- Rendered by js/order.js -->
+                        </div>
+
+                        <!-- Promo Code Input -->
+                        <div class="receipt-promo-box">
+                            <input type="text" id="promoInput" class="promo-input" placeholder="KODE VOUCHER (COFFEEDUO)">
+                            <button type="button" class="btn-apply-promo" onclick="applyPromoCode()">
+                                Gunakan
+                            </button>
+                        </div>
+
+                        <!-- Math Breakdown -->
+                        <div class="receipt-calculations">
+                            <!-- Rendered by js/order.js -->
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="button" class="btn-primary btn-submit-order" onclick="document.getElementById('checkoutForm').requestSubmit()">
+                            <span class="submit-btn-total-text">Konfirmasi Pesanan</span>
+                        </button>
                     </div>
                 </div>
-
-
-                <div class="form-group">
-                    <label>Add-ons</label>
-                    <div class="addons">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="addons" value="whipped-cream">
-                            Whipped Cream (+$0.50)
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="addons" value="caramel-syrup">
-                            Caramel Syrup (+$0.50)
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="addons" value="chocolate-sauce">
-                            Chocolate Sauce (+$0.50)
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="notes">Special Instructions</label>
-                    <textarea id="notes" name="notes"></textarea>
-                </div>
-
-                <div class="order-summary">
-                    <h3>Order Summary</h3>
-                    <div class="summary-items">
-                    </div>
-                    <div class="total">
-                        <span>Total:</span>
-                        <span id="totalPrice">$0.00</span>
-                    </div>
-                </div>
-
-                <button type="submit" class="submit-btn">Place Order</button>
-            </form>
-        </section>
+            </div>
+        </div>
     </main>
 
+    <!-- Digital Receipt Modal -->
+    <div class="order-modal-backdrop">
+        <div class="order-modal-content">
+            <!-- Rendered dynamically upon submission -->
+        </div>
+    </div>
+
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-section">
+            <div class="footer-brand">
                 <h3>MR.COFFEE</h3>
-                <p>Making all taste coffee every day</p>
+                <p>Specialty coffee roastery & cafe modern yang berkomitmen menghadirkan pengalaman kopi bernutrisi dan bermakna untuk semua penikmat kopi.</p>
             </div>
             <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>Email: info@mrcoffee.com</p>
-                <p>Phone: (123) 456-7890</p>
+                <h4>Navigasi</h4>
+                <ul class="footer-nav-list">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="menu.html">Katalog Menu</a></li>
+                    <li><a href="rewards.html">Voucher & Rewards</a></li>
+                    <li><a href="about.html">Tentang Kami</a></li>
+                    <li><a href="order.html">Order Online</a></li>
+                </ul>
             </div>
             <div class="footer-section">
-                <h3>Follow Us</h3>
+                <h4>Kontak Kafe</h4>
+                <p>📍 Jl. Senopati No. 42, Kebayoran Baru, Jakarta Selatan</p>
+                <p>📞 (021) 555-0199</p>
+                <p>✉️ hello@mrcoffee.id</p>
+            </div>
+            <div class="footer-section">
+                <h4>Ikuti Komunitas</h4>
                 <div class="social-links">
-                    <a href="#">Instagram</a>
-                    <a href="#">Facebook</a>
-                    <a href="#">Twitter</a>
+                    <a href="#" class="social-icon-btn" title="Instagram">IG</a>
+                    <a href="#" class="social-icon-btn" title="TikTok">TT</a>
+                    <a href="#" class="social-icon-btn" title="Twitter / X">X</a>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 MR.COFFEE. All rights reserved.</p>
+            <span>&copy; 2026 MR.COFFEE Roastery. Hak Cipta Dilindungi.</span>
+            <span>Crafted with love & coffee beans.</span>
         </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
     <script src="../js/order.js"></script>
 </body>
-</html> 
+</html>
