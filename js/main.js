@@ -398,9 +398,16 @@ function setupScrollReveals() {
                 obs.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.02, rootMargin: '0px 0px 120px 0px' });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Fallback safeguard so content is never hidden on full-page previews or fast loads
+    setTimeout(() => {
+        document.querySelectorAll('.reveal:not(.is-revealed)').forEach(el => {
+            el.classList.add('is-revealed');
+        });
+    }, 700);
 }
 
 // DOM Ready initialization
