@@ -697,17 +697,19 @@ function setupStoreStatus() {
     badges.forEach(badge => {
         if (isOpen) {
             badge.className = 'store-status-badge open';
+            badge.setAttribute('title', 'Kafe Sedang Buka (Jam Operasional: 07.00 - 22.00 WIB)');
             badge.innerHTML = `
                 <span class="status-indicator-dot open"></span>
-                <span>Buka Sekarang</span>
-                <span class="badge-long-text">• 07.00 - 22.00 WIB</span>
+                <span>Buka</span>
+                <span class="badge-long-text">• 07-22 WIB</span>
             `;
         } else {
             badge.className = 'store-status-badge closed';
+            badge.setAttribute('title', 'Kafe Sedang Tutup (Buka besok pukul 07.00 WIB)');
             badge.innerHTML = `
                 <span class="status-indicator-dot closed"></span>
-                <span>Sedang Tutup</span>
-                <span class="badge-long-text">• Buka 07.00 WIB</span>
+                <span>Tutup</span>
+                <span class="badge-long-text">• Buka 07.00</span>
             `;
         }
     });
