@@ -88,9 +88,11 @@ Website/
 │   └── order.css         # Style khusus halaman Order
 ├── images/               # Semua aset gambar produk, logo, dan profil
 ├── js/
-│   ├── main.js           # Logic navbar, scroll animations, dynamic product cards
-│   ├── menu.js           # Logic interaktif di halaman menu
-│   └── order.js          # Logic kalkulasi pesanan
+│   ├── products-data.js  # Master katalog produk, detail POS, origin & roast level
+│   ├── main.js           # Logic navbar, POS modal, cart options, status buka/tutup
+│   ├── menu.js           # Logic filter & interaktif katalog menu
+│   ├── order.js          # Logic checkout, kalkulasi pesanan & simpan riwayat order
+│   └── rewards.js        # Logic voucher promo & 1-click reorder riwayat pesanan
 ├── pages/
 │   ├── about.html        # Halaman profil founder & filosofi kopi
 │   ├── menu.html         # Katalog lengkap varian kopi

@@ -1600,3 +1600,528 @@ footer {
         max-width: 100%;
     }
 }
+
+/* ==========================================================================
+   LIVE STORE OPERATIONAL HOURS BADGE
+   ========================================================================== */
+.store-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0.4rem 0.95rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.78rem;
+    font-weight: 600;
+    white-space: nowrap;
+    border: var(--border-bevel);
+    box-shadow: var(--nm-inset-sm);
+    transition: var(--transition-smooth);
+}
+
+.store-status-badge.open {
+    color: #1e6b37;
+    background: rgba(46, 125, 50, 0.08);
+}
+
+.store-status-badge.closed {
+    color: #992323;
+    background: rgba(198, 40, 40, 0.08);
+}
+
+.status-indicator-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.status-indicator-dot.open {
+    background-color: #2e7d32;
+    box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.25);
+    animation: statusPulse 2s infinite ease-in-out;
+}
+
+.status-indicator-dot.closed {
+    background-color: #c62828;
+}
+
+@keyframes statusPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.35); opacity: 0.65; }
+}
+
+@media (max-width: 900px) {
+    .store-status-badge {
+        font-size: 0.72rem;
+        padding: 0.3rem 0.7rem;
+    }
+}
+
+@media (max-width: 680px) {
+    .store-status-badge span.badge-long-text {
+        display: none;
+    }
+}
+
+/* ==========================================================================
+   POS MENU DETAIL & DRINK CUSTOMIZATION MODAL
+   ========================================================================== */
+.pos-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(37, 22, 18, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 2100;
+    opacity: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2rem;
+    transition: opacity 0.3s ease;
+}
+
+.pos-modal-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.pos-modal {
+    background: var(--nm-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--nm-flat-hero);
+    border: var(--border-bevel);
+    width: 100%;
+    max-width: 580px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: scale(0.92) translateY(20px);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pos-modal-backdrop.active .pos-modal {
+    transform: scale(1) translateY(0);
+}
+
+.pos-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1.25rem 1.6rem 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.pos-header-info h3 {
+    font-size: 1.35rem;
+    margin-bottom: 4px;
+    color: var(--primary-color);
+}
+
+.pos-header-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+}
+
+.pos-meta-tag {
+    font-size: 0.72rem;
+    padding: 2px 8px;
+    border-radius: var(--radius-pill);
+    background: var(--accent-light);
+    color: var(--accent-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.pos-meta-origin {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.pos-close-btn {
+    background: var(--nm-surface);
+    border: var(--border-bevel);
+    box-shadow: var(--nm-flat-sm);
+    color: var(--text-muted);
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    flex-shrink: 0;
+}
+
+.pos-close-btn:hover {
+    box-shadow: var(--nm-inset-sm);
+    color: var(--accent-color);
+}
+
+.pos-modal-body {
+    padding: 1.2rem 1.6rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.pos-product-overview {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.35);
+    padding: 12px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--nm-inset-sm);
+}
+
+.pos-product-img {
+    width: 85px;
+    height: 85px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--nm-flat-sm);
+    border: var(--border-bevel);
+    flex-shrink: 0;
+}
+
+.pos-overview-text {
+    flex: 1;
+}
+
+.pos-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.pos-base-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.pos-taste-notes-callout {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--accent-color);
+    background: rgba(178, 93, 43, 0.08);
+    padding: 3px 8px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-top: 4px;
+    border-left: 2px solid var(--accent-color);
+}
+
+.pos-desc-paragraph {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-top: 4px;
+}
+
+.pos-section-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-light);
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pos-section-label span.req {
+    color: var(--accent-color);
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: none;
+}
+
+.pos-chips-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.pos-chip {
+    flex: 1;
+    min-width: 90px;
+    padding: 0.55rem 0.8rem;
+    border-radius: var(--radius-sm);
+    background: var(--nm-surface);
+    border: var(--border-bevel);
+    box-shadow: var(--nm-flat-sm);
+    color: var(--text-main);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: center;
+    transition: var(--transition-smooth);
+    user-select: none;
+}
+
+.pos-chip:hover {
+    box-shadow: var(--nm-hover);
+    color: var(--accent-color);
+}
+
+.pos-chip.active {
+    background: var(--nm-surface);
+    box-shadow: var(--nm-inset-sm);
+    color: var(--accent-color);
+    font-weight: 700;
+    border-color: var(--accent-color);
+}
+
+.pos-chip.disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.pos-input-text {
+    width: 100%;
+    padding: 0.65rem 0.95rem;
+    border-radius: var(--radius-sm);
+    background: var(--nm-surface);
+    border: var(--border-bevel);
+    box-shadow: var(--nm-inset-sm);
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 0.86rem;
+    outline: none;
+    transition: var(--transition-smooth);
+}
+
+.pos-input-text:focus {
+    box-shadow: var(--nm-inset);
+    border-color: var(--accent-color);
+}
+
+.pos-modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.6rem;
+    background: rgba(234, 229, 223, 0.95);
+    border-top: 1px solid rgba(255, 255, 255, 0.6);
+    gap: 12px;
+}
+
+.pos-qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--nm-surface);
+    padding: 4px 8px;
+    border-radius: var(--radius-pill);
+    box-shadow: var(--nm-inset-sm);
+}
+
+.pos-qty-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: var(--border-bevel);
+    background: var(--nm-surface);
+    box-shadow: var(--nm-flat-sm);
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+}
+
+.pos-qty-btn:hover {
+    box-shadow: var(--nm-inset-sm);
+    color: var(--accent-color);
+}
+
+.pos-qty-val {
+    font-size: 1rem;
+    font-weight: 700;
+    min-width: 20px;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+.pos-add-to-order-btn {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 0.85rem 1.4rem;
+    border-radius: var(--radius-pill);
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+    color: #ffffff;
+    border: none;
+    box-shadow: var(--nm-flat-sm);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.pos-add-to-order-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--nm-hover);
+}
+
+/* ==========================================================================
+   CART ITEM OPTIONS & REORDER BANNER
+   ========================================================================== */
+.cart-item-options-text {
+    font-size: 0.74rem;
+    color: var(--accent-color);
+    margin-top: 2px;
+    line-height: 1.35;
+    background: rgba(178, 93, 43, 0.08);
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.cart-reorder-banner {
+    margin: 12px 0 6px;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.45);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--nm-inset-sm);
+    border: var(--border-bevel);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-reorder-info {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.cart-reorder-info strong {
+    color: var(--primary-color);
+    display: block;
+    font-size: 0.83rem;
+}
+
+.btn-mini-reorder {
+    background: var(--nm-surface);
+    border: var(--border-bevel);
+    box-shadow: var(--nm-flat-sm);
+    color: var(--accent-color);
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: var(--transition-smooth);
+}
+
+.btn-mini-reorder:hover {
+    box-shadow: var(--nm-inset-sm);
+    background: var(--accent-color);
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   RECENT ORDERS CARD IN REWARDS PAGE
+   ========================================================================== */
+.recent-orders-card {
+    background: var(--nm-surface);
+    border-radius: var(--radius-md);
+    box-shadow: var(--nm-flat);
+    border: var(--border-bevel);
+    padding: 1.6rem 2rem;
+    margin: 2.5rem 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.recent-orders-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dashed rgba(56, 36, 30, 0.15);
+    padding-bottom: 0.8rem;
+}
+
+.recent-orders-header h3 {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.recent-order-item-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--nm-inset-sm);
+    border: var(--border-bevel);
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.recent-order-meta strong {
+    color: var(--primary-color);
+    font-size: 0.95rem;
+}
+
+.recent-order-meta p {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    margin: 2px 0 0;
+}
+
+.recent-order-summary {
+    font-size: 0.86rem;
+    color: var(--text-muted);
+}
+
+.btn-reorder-main {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+    color: #ffffff;
+    border: none;
+    box-shadow: var(--nm-flat-sm);
+    padding: 0.55rem 1.2rem;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.btn-reorder-main:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--nm-hover);
+}

@@ -1,18 +1,8 @@
 /**
  * MR.COFFEE - ORDER & CHECKOUT LOGIC ENGINE
- * Handles: Two-Way Cart Sync, Visual Picker, Add-ons Calculation, Promo Vouchers, Dynamic Receipt
+ * Handles: Two-Way Cart Sync, POS Picker Integration, Add-ons Calculation,
+ *          Promo Vouchers, Order History Persistence, Dynamic Receipt
  */
-
-const orderCatalog = [
-    { name: 'Americano', price: 35000, image: '../images/product1.jpeg', category: 'Espresso' },
-    { name: 'Cappuccino', price: 40000, image: '../images/product2.jpeg', category: 'Espresso' },
-    { name: 'Caramel Macchiato', price: 45000, image: '../images/product6.jpeg', category: 'Espresso' },
-    { name: 'Cold Brew', price: 45000, image: '../images/product3.jpeg', category: 'Brewed' },
-    { name: 'V60 Pour Over', price: 40000, image: '../images/product 9.jpeg', category: 'Brewed' },
-    { name: 'Japanese Iced Coffee', price: 48000, image: '../images/product8.jpeg', category: 'Signature' },
-    { name: 'Hazelnut Frappuccino', price: 50000, image: '../images/product 5.jpeg', category: 'Blended' },
-    { name: 'Matcha Latte', price: 43000, image: '../images/product11.jpeg', category: 'Non-Coffee' }
-];
 
 const availableAddons = [
     { id: 'extra-espresso', name: 'Extra Espresso Shot', price: 8000 },
@@ -29,7 +19,15 @@ let appliedPromo = null; // { code: 'COFFEEDUO', discountRate: 0.5 }
 
 // Format Rupiah
 function formatRp(val) {
-    return 'Rp ' + Number(val).toLocaleString('id-ID');
+    return 'Rp ' + Number(val || 0).toLocaleString('id-ID');
+}
+
+// Get Catalog from MrCoffeeProducts or fallback
+function getOrderCatalog() {
+    if (window.MrCoffeeProducts) {
+        return window.MrCoffeeProducts.getAll();
+    }
+    return [];
 }
 
 // Initialize Quick Picker Grid
@@ -37,17 +35,21 @@ function renderPickerGrid() {
     const grid = document.querySelector('.order-item-picker');
     if (!grid) return;
 
+    const catalog = getOrderCatalog();
     const cartItems = window.MrCoffeeCart ? window.MrCoffeeCart.getItems() : [];
 
-    grid.innerHTML = orderCatalog.map(item => {
-        const inCart = cartItems.find(c => c.name.toLowerCase() === item.name.toLowerCase());
-        const isSelected = !!inCart;
-        const qty = inCart ? inCart.qty : 0;
+    grid.innerHTML = catalog.map(item => {
+        const inCartCount = cartItems
+            .filter(c => c.name.toLowerCase() === item.name.toLowerCase())
+            .reduce((sum, c) => sum + c.qty, 0);
+
+        const isSelected = inCartCount > 0;
+        const imgSrc = window.MrCoffeeProducts ? window.MrCoffeeProducts.resolveImage(item.image) : item.image;
 
         return `
-            <div class="picker-card ${isSelected ? 'selected' : ''}" onclick="togglePickerItem('${item.name.replace(/'/g, "\\'")}', ${item.price}, '${item.image}', '${item.category}')">
-                ${qty > 0 ? `<span class="picker-card-badge">${qty}</span>` : ''}
-                <img src="${item.image}" alt="${item.name}" onerror="this.src='https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=150'">
+            <div class="picker-card ${isSelected ? 'selected' : ''}" onclick="handlePickerItemClick('${item.id}')" title="Klik untuk kustomisasi & tambah ke pesanan">
+                ${inCartCount > 0 ? `<span class="picker-card-badge">${inCartCount}</span>` : ''}
+                <img src="${imgSrc}" alt="${item.name}" onerror="this.src='https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=150'">
                 <div class="picker-card-info">
                     <div class="picker-card-title">${item.name}</div>
                     <div class="picker-card-price">${formatRp(item.price)}</div>
@@ -57,22 +59,14 @@ function renderPickerGrid() {
     }).join('');
 }
 
-// Toggle or Add Item from Picker
-window.togglePickerItem = function(name, price, image, category) {
-    if (!window.MrCoffeeCart) return;
-
-    const items = window.MrCoffeeCart.getItems();
-    const existing = items.find(i => i.name.toLowerCase() === name.toLowerCase());
-
-    if (existing) {
-        // Increment quantity
-        window.MrCoffeeCart.updateQty(name, 1);
-    } else {
-        window.MrCoffeeCart.addItem({ name, price, image, category }, 1);
+// Handle item click: opens POS customization modal
+window.handlePickerItemClick = function (id) {
+    if (window.MrCoffeePOS) {
+        window.MrCoffeePOS.openModal(id);
+    } else if (window.MrCoffeeProducts && window.MrCoffeeCart) {
+        const item = window.MrCoffeeProducts.getById(id);
+        if (item) window.MrCoffeeCart.addItem(item, 1);
     }
-
-    renderPickerGrid();
-    updateReceiptSummary();
 };
 
 // Render Add-ons Pills
@@ -94,7 +88,7 @@ function renderAddonsPills() {
     }).join('');
 }
 
-window.handleAddonToggle = function(addonId) {
+window.handleAddonToggle = function (addonId) {
     const addon = availableAddons.find(a => a.id === addonId);
     if (!addon) return;
 
@@ -150,7 +144,7 @@ function setupPaymentMethods() {
 }
 
 // Promo Code Application
-window.applyPromoCode = function() {
+window.applyPromoCode = function () {
     const input = document.getElementById('promoInput');
     if (!input) return;
 
@@ -184,26 +178,43 @@ function updateReceiptSummary() {
     if (cartItems.length === 0 && selectedAddons.length === 0) {
         itemsList.innerHTML = `
             <div style="text-align:center; padding: 1.5rem 0; color:var(--text-muted); font-size:0.88rem;">
-                Belum ada menu yang dipilih.<br>Silakan klik varian kopi di atas.
+                Belum ada menu yang dipilih.<br>Silakan klik varian kopi di atas untuk kustomisasi.
             </div>
         `;
     } else {
-        let html = cartItems.map(item => `
-            <div class="receipt-item-row">
-                <div class="receipt-item-info">
-                    <div class="receipt-item-name">${item.name}</div>
-                    <div class="receipt-item-meta">${item.qty}x @ ${formatRp(item.price)}</div>
+        let html = cartItems.map(item => {
+            let optionsText = '';
+            if (item.options) {
+                const opt = item.options;
+                const parts = [];
+                if (opt.temp) parts.push(opt.temp === 'iced' ? '🧊 Iced' : '☕ Hot');
+                if (opt.sugar && opt.sugar !== '100%') parts.push(`Gula: ${opt.sugar}`);
+                if (opt.milk === 'oat') parts.push('🌾 Oat Milk');
+                if (opt.temp === 'iced' && opt.ice === 'less') parts.push('❄️ Less Ice');
+                if (opt.notes) parts.push(`"${opt.notes}"`);
+                if (parts.length > 0) {
+                    optionsText = `<div class="cart-item-options-text" style="font-size:0.7rem;">${parts.join(' • ')}</div>`;
+                }
+            }
+
+            return `
+                <div class="receipt-item-row">
+                    <div class="receipt-item-info">
+                        <div class="receipt-item-name">${item.name}</div>
+                        ${optionsText}
+                        <div class="receipt-item-meta">${item.qty}x @ ${formatRp(item.price)}</div>
+                    </div>
+                    <div class="receipt-item-price">${formatRp(item.price * item.qty)}</div>
                 </div>
-                <div class="receipt-item-price">${formatRp(item.price * item.qty)}</div>
-            </div>
-        `).join('');
+            `;
+        }).join('');
 
         if (selectedAddons.length > 0) {
             html += selectedAddons.map(addon => `
                 <div class="receipt-item-row" style="color:var(--accent-color);">
                     <div class="receipt-item-info">
                         <div class="receipt-item-name">+ ${addon.name}</div>
-                        <div class="receipt-item-meta">Add-on Kustomisasi</div>
+                        <div class="receipt-item-meta">Add-on Ekstra</div>
                     </div>
                     <div class="receipt-item-price">+ ${formatRp(addon.price)}</div>
                 </div>
@@ -261,7 +272,7 @@ function updateReceiptSummary() {
     }
 }
 
-// Form Submission & Success Receipt Modal
+// Form Submission & Success Receipt Modal with LocalStorage History
 function setupOrderForm() {
     const form = document.getElementById('checkoutForm');
     if (!form) return;
@@ -285,7 +296,7 @@ function setupOrderForm() {
             return;
         }
 
-        // Generate simulated Order ID
+        // Generate Order ID
         const orderId = '#MRC-' + Math.floor(1000 + Math.random() * 9000);
         const modalBackdrop = document.querySelector('.order-modal-backdrop');
         const modalContent = document.querySelector('.order-modal-content');
@@ -297,6 +308,33 @@ function setupOrderForm() {
         const tax = Math.round((subtotal - discount) * 0.1);
         const deliveryFee = fulfillmentType === 'delivery' ? 10000 : 0;
         const grandTotal = (subtotal - discount) + tax + deliveryFee;
+
+        // Save order to LocalStorage History (for Reorder feature)
+        const orderRecord = {
+            orderId: orderId,
+            date: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }),
+            items: cartItems.map(i => ({
+                id: i.id,
+                name: i.name,
+                price: i.price,
+                qty: i.qty,
+                image: i.image,
+                category: i.category,
+                options: i.options || null
+            })),
+            addons: [...selectedAddons],
+            fulfillment: `${fulfillmentType} (${location || 'Kafe'})`,
+            paymentMethod: paymentMethod,
+            total: grandTotal
+        };
+
+        let history = [];
+        try {
+            history = JSON.parse(localStorage.getItem('mrcoffee_order_history') || '[]');
+        } catch (err) {}
+        history.unshift(orderRecord);
+        if (history.length > 5) history = history.slice(0, 5);
+        localStorage.setItem('mrcoffee_order_history', JSON.stringify(history));
 
         modalContent.innerHTML = `
             <div class="modal-success-badge">✓</div>
@@ -346,7 +384,7 @@ function setupOrderForm() {
     });
 }
 
-window.closeOrderSuccessModal = function() {
+window.closeOrderSuccessModal = function () {
     const modalBackdrop = document.querySelector('.order-modal-backdrop');
     if (modalBackdrop) modalBackdrop.classList.remove('active');
 };
@@ -354,12 +392,23 @@ window.closeOrderSuccessModal = function() {
 document.addEventListener('DOMContentLoaded', () => {
     // If cart is empty on first arrival, seed with 1 default recommendation
     if (window.MrCoffeeCart && window.MrCoffeeCart.getItems().length === 0) {
-        window.MrCoffeeCart.addItem({
-            name: 'Cappuccino',
-            price: 40000,
-            image: '../images/product2.jpeg',
-            category: 'Espresso'
-        }, 1);
+        const defaultItem = window.MrCoffeeProducts ? window.MrCoffeeProducts.getById('cappuccino') : null;
+        if (defaultItem) {
+            window.MrCoffeeCart.addItem({
+                id: defaultItem.id,
+                name: defaultItem.name,
+                price: defaultItem.price,
+                image: defaultItem.image,
+                category: defaultItem.categoryLabel || defaultItem.category,
+                options: {
+                    temp: 'hot',
+                    sugar: '100%',
+                    milk: 'regular',
+                    ice: 'normal',
+                    notes: ''
+                }
+            }, 1);
+        }
     }
 
     renderPickerGrid();
