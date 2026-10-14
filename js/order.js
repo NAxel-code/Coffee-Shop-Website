@@ -154,6 +154,15 @@ window.applyPromoCode = function () {
     if (code === 'COFFEEDUO') {
         appliedPromo = { code: 'COFFEEDUO', discountRate: 0.5, desc: 'Diskon 50% (Buy 1 Get 1 Promo)' };
         if (window.MrCoffeeCart) window.MrCoffeeCart.showToast('🎉 Promo COFFEEDUO berhasil dipasang! Diskon 50% diterapkan.');
+    } else if (code === 'FREECOFFEE') {
+        appliedPromo = { code: 'FREECOFFEE', discountRate: 1.0, desc: 'Hadiah 10 Stamp: 100% Free Coffee Reward' };
+        if (window.MrCoffeeCart) window.MrCoffeeCart.showToast('🎁 Hadiah Stamp Hunt! Gratis 1 cup kopi diterapkan.');
+    } else if (code === 'SWEETWEEKEND') {
+        appliedPromo = { code: 'SWEETWEEKEND', discountRate: 0.3, desc: 'Diskon 30% Promo Weekend Pastry & Brew' };
+        if (window.MrCoffeeCart) window.MrCoffeeCart.showToast('🥐 Promo SWEETWEEKEND berhasil dipasang! Diskon 30% diterapkan.');
+    } else if (code === 'AFTERNOON20') {
+        appliedPromo = { code: 'AFTERNOON20', discountRate: 0.2, desc: 'Diskon 20% Happy Hour Sore (15.00-17.00)' };
+        if (window.MrCoffeeCart) window.MrCoffeeCart.showToast('☕ Promo AFTERNOON20 berhasil dipasang! Diskon 20% diterapkan.');
     } else if (code === 'WELCOME10') {
         appliedPromo = { code: 'WELCOME10', discountRate: 0.1, desc: 'Diskon 10% Pelanggan Baru' };
         if (window.MrCoffeeCart) window.MrCoffeeCart.showToast('🎉 Promo WELCOME10 berhasil dipasang! Diskon 10% diterapkan.');
@@ -187,10 +196,14 @@ function updateReceiptSummary() {
             if (item.options) {
                 const opt = item.options;
                 const parts = [];
+                if (opt.size === 'large') parts.push('🥤 Large');
                 if (opt.temp) parts.push(opt.temp === 'iced' ? '🧊 Iced' : '☕ Hot');
-                if (opt.sugar && opt.sugar !== '100%') parts.push(`Gula: ${opt.sugar}`);
                 if (opt.milk === 'oat') parts.push('🌾 Oat Milk');
-                if (opt.temp === 'iced' && opt.ice === 'less') parts.push('❄️ Less Ice');
+                if (opt.temp === 'iced') {
+                    if (opt.ice === 'less') parts.push('❄️ Less Ice');
+                    else if (opt.ice === 'none') parts.push('🚫 No Ice');
+                }
+                if (opt.sugar && opt.sugar !== '100%') parts.push(`Gula: ${opt.sugar}`);
                 if (opt.notes) parts.push(`"${opt.notes}"`);
                 if (parts.length > 0) {
                     optionsText = `<div class="cart-item-options-text" style="font-size:0.7rem;">${parts.join(' • ')}</div>`;

@@ -104,6 +104,7 @@ const MrCoffeeCart = {
     notifyListeners() {
         this.updateBadge();
         this.renderDrawer();
+        this.updateMobileFloatingCart();
         this.listeners.forEach(fn => fn(this.getItems()));
     },
 
@@ -113,6 +114,48 @@ const MrCoffeeCart = {
         badges.forEach(badge => {
             badge.textContent = count;
         });
+        this.updateMobileFloatingCart();
+    },
+
+    updateMobileFloatingCart() {
+        let bar = document.querySelector('.mobile-floating-cart-bar');
+        const count = this.getCount();
+        const total = this.getTotal();
+
+        if (count === 0) {
+            if (bar) bar.classList.remove('visible');
+            return;
+        }
+
+        if (!bar) {
+            bar = document.createElement('div');
+            bar.className = 'mobile-floating-cart-bar';
+            bar.onclick = () => {
+                const overlay = document.querySelector('.cart-drawer-overlay');
+                const drawer = document.querySelector('.cart-drawer');
+                if (overlay && drawer) {
+                    overlay.classList.add('active');
+                    drawer.classList.add('active');
+                    MrCoffeeCart.renderDrawer();
+                }
+            };
+            document.body.appendChild(bar);
+        }
+
+        bar.innerHTML = `
+            <div class="floating-cart-left">
+                <span class="floating-cart-icon">☕</span>
+                <div class="floating-cart-text">
+                    <strong class="floating-cart-count">${count} Item di Keranjang</strong>
+                    <span class="floating-cart-price">${this.formatRp(total)}</span>
+                </div>
+            </div>
+            <div class="floating-cart-cta">
+                <span>Pesanan</span>
+                <span style="font-size:1.05rem; line-height:1;">→</span>
+            </div>
+        `;
+        bar.classList.add('visible');
     },
 
     triggerBadgePulse() {
@@ -249,10 +292,14 @@ const MrCoffeeCart = {
             if (item.options) {
                 const opt = item.options;
                 const parts = [];
+                if (opt.size === 'large') parts.push('🥤 Large');
                 if (opt.temp) parts.push(opt.temp === 'iced' ? '🧊 Iced' : '☕ Hot');
-                if (opt.sugar && opt.sugar !== '100%') parts.push(`Gula: ${opt.sugar}`);
                 if (opt.milk === 'oat') parts.push('🌾 Oat Milk');
-                if (opt.temp === 'iced' && opt.ice === 'less') parts.push('❄️ Less Ice');
+                if (opt.temp === 'iced') {
+                    if (opt.ice === 'less') parts.push('❄️ Less Ice');
+                    else if (opt.ice === 'none') parts.push('🚫 No Ice');
+                }
+                if (opt.sugar && opt.sugar !== '100%') parts.push(`Gula: ${opt.sugar}`);
                 if (opt.notes) parts.push(`"${opt.notes}"`);
                 if (parts.length > 0) {
                     optionsText = `<div class="cart-item-options-text">${parts.join(' • ')}</div>`;
@@ -293,9 +340,10 @@ window.MrCoffeeCart = MrCoffeeCart;
 const MrCoffeePOS = {
     activeProduct: null,
     currentOptions: {
+        size: 'regular',
+        milk: 'regular',
         temp: 'hot',
         sugar: '100%',
-        milk: 'regular',
         ice: 'normal',
         notes: ''
     },
@@ -308,6 +356,7 @@ const MrCoffeePOS = {
         backdrop.className = 'pos-modal-backdrop';
         backdrop.innerHTML = `
             <div class="pos-modal">
+                <div class="pos-drag-handle"></div>
                 <div class="pos-modal-header">
                     <div class="pos-header-info">
                         <h3 class="pos-modal-title">Item Name</h3>
@@ -334,7 +383,16 @@ const MrCoffeePOS = {
 
                     <!-- POS Customization Form -->
                     <div class="pos-customization-section">
-                        <!-- Suhu -->
+                        <!-- Size & Milk 2x2 Grid (Chagee Style) -->
+                        <div class="pos-form-group pos-size-milk-group">
+                            <div class="pos-section-label">
+                                <span class="pos-size-group-title">Ukuran & Pilihan Susu (Size & Milk)</span>
+                                <span class="req">Wajib</span>
+                            </div>
+                            <div class="pos-size-milk-grid"></div>
+                        </div>
+
+                        <!-- Suhu Penyajian -->
                         <div class="pos-form-group pos-temp-group">
                             <div class="pos-section-label">
                                 <span>Suhu Penyajian</span>
@@ -343,6 +401,19 @@ const MrCoffeePOS = {
                             <div class="pos-chips-group pos-temp-chips">
                                 <div class="pos-chip" data-temp="hot" onclick="MrCoffeePOS.selectTemp('hot')">☕ Panas (Hot)</div>
                                 <div class="pos-chip" data-temp="iced" onclick="MrCoffeePOS.selectTemp('iced')">🧊 Dingin (Iced)</div>
+                            </div>
+                        </div>
+
+                        <!-- Pilihan Es Batu (Hanya saat Dingin/Iced) -->
+                        <div class="pos-form-group pos-ice-group">
+                            <div class="pos-section-label">
+                                <span>Jumlah Es Batu (Ice Level)</span>
+                                <span class="req">Pilihan</span>
+                            </div>
+                            <div class="pos-chips-group pos-ice-chips">
+                                <div class="pos-chip active" data-ice="normal" onclick="MrCoffeePOS.selectIce('normal')">🧊 Normal Ice (100%)</div>
+                                <div class="pos-chip" data-ice="less" onclick="MrCoffeePOS.selectIce('less')">❄️ Sedikit Es (50%)</div>
+                                <div class="pos-chip" data-ice="none" onclick="MrCoffeePOS.selectIce('none')">🚫 Tanpa Es</div>
                             </div>
                         </div>
 
@@ -359,36 +430,12 @@ const MrCoffeePOS = {
                             </div>
                         </div>
 
-                        <!-- Pilihan Susu -->
-                        <div class="pos-form-group pos-milk-group">
-                            <div class="pos-section-label">
-                                <span>Pilihan Susu</span>
-                                <span class="req">Substitusi</span>
-                            </div>
-                            <div class="pos-chips-group pos-milk-chips">
-                                <div class="pos-chip active" data-milk="regular" onclick="MrCoffeePOS.selectMilk('regular')">🥛 Fresh Milk (Standar)</div>
-                                <div class="pos-chip" data-milk="oat" onclick="MrCoffeePOS.selectMilk('oat')">🌾 Oat Milk (+Rp 8.000)</div>
-                            </div>
-                        </div>
-
-                        <!-- Pilihan Es -->
-                        <div class="pos-form-group pos-ice-group">
-                            <div class="pos-section-label">
-                                <span>Jumlah Es Batu (Ice Level)</span>
-                                <span class="req">Pilihan</span>
-                            </div>
-                            <div class="pos-chips-group pos-ice-chips">
-                                <div class="pos-chip active" data-ice="normal" onclick="MrCoffeePOS.selectIce('normal')">🧊 Es Normal</div>
-                                <div class="pos-chip" data-ice="less" onclick="MrCoffeePOS.selectIce('less')">❄️ Sedikit Es (Less)</div>
-                            </div>
-                        </div>
-
                         <!-- Catatan Barista -->
                         <div class="pos-form-group">
                             <div class="pos-section-label">
                                 <span>Catatan Khusus untuk Barista</span>
                             </div>
-                            <input type="text" class="pos-input-text pos-notes-input" placeholder="Contoh: ekstra sedotan, pisahkan es batu, jangan terlalu panas...">
+                            <input type="text" class="pos-input-text pos-notes-input" placeholder="Contoh: ekstra sedotan, pisahkan es batu, jangan terlalu manis...">
                         </div>
                     </div>
                 </div>
@@ -426,9 +473,10 @@ const MrCoffeePOS = {
         this.activeProduct = p;
         this.currentQty = 1;
         this.currentOptions = {
+            size: 'regular',
+            milk: p.hasMilk ? 'regular' : 'none',
             temp: p.defaultTemp || 'hot',
             sugar: '100%',
-            milk: 'regular',
             ice: 'normal',
             notes: ''
         };
@@ -446,6 +494,9 @@ const MrCoffeePOS = {
         backdrop.querySelector('.pos-desc-paragraph').textContent = p.description;
         backdrop.querySelector('.pos-taste-notes-callout').textContent = `✨ Taste Profile: ${p.notes}`;
 
+        // Render Size & Milk Grid (Chagee Style)
+        this.renderSizeMilkGrid();
+
         // Configure Temperature chips
         const tempChips = backdrop.querySelectorAll('.pos-temp-chips .pos-chip');
         tempChips.forEach(chip => {
@@ -460,16 +511,7 @@ const MrCoffeePOS = {
             }
         });
 
-        // Configure Milk Group
-        const milkGroup = backdrop.querySelector('.pos-milk-group');
-        if (p.hasMilk) {
-            milkGroup.style.display = 'block';
-            this.updateMilkChips();
-        } else {
-            milkGroup.style.display = 'none';
-        }
-
-        // Configure Ice Group
+        // Configure Ice & Sugar Groups
         this.updateIceVisibility();
         this.updateSugarChips();
 
@@ -480,6 +522,83 @@ const MrCoffeePOS = {
         this.updateFooterTotal();
 
         backdrop.classList.add('active');
+    },
+
+    renderSizeMilkGrid() {
+        const grid = document.querySelector('.pos-size-milk-grid');
+        const groupTitle = document.querySelector('.pos-size-group-title');
+        if (!grid || !this.activeProduct) return;
+
+        const p = this.activeProduct;
+        if (p.hasMilk) {
+            if (groupTitle) groupTitle.textContent = 'Ukuran & Pilihan Susu (Size & Milk)';
+            grid.innerHTML = `
+                <div class="pos-size-milk-card ${this.currentOptions.size === 'regular' && this.currentOptions.milk === 'regular' ? 'active' : ''}"
+                    data-size="regular" data-milk="regular" onclick="MrCoffeePOS.selectSizeMilk('regular', 'regular')">
+                    <div class="pos-size-card-header">
+                        <span class="pos-size-name">☕ Regular (350ml)</span>
+                        <span class="pos-size-price-tag">Standar</span>
+                    </div>
+                    <span class="pos-milk-name">🥛 Fresh Milk (Standar)</span>
+                </div>
+                <div class="pos-size-milk-card ${this.currentOptions.size === 'large' && this.currentOptions.milk === 'regular' ? 'active' : ''}"
+                    data-size="large" data-milk="regular" onclick="MrCoffeePOS.selectSizeMilk('large', 'regular')">
+                    <div class="pos-size-card-header">
+                        <span class="pos-size-name">🥤 Large (500ml)</span>
+                        <span class="pos-size-price-tag">+Rp 5.000</span>
+                    </div>
+                    <span class="pos-milk-name">🥛 Fresh Milk (Standar)</span>
+                </div>
+                <div class="pos-size-milk-card ${this.currentOptions.size === 'regular' && this.currentOptions.milk === 'oat' ? 'active' : ''}"
+                    data-size="regular" data-milk="oat" onclick="MrCoffeePOS.selectSizeMilk('regular', 'oat')">
+                    <div class="pos-size-card-header">
+                        <span class="pos-size-name">☕ Regular (350ml)</span>
+                        <span class="pos-size-price-tag">+Rp 8.000</span>
+                    </div>
+                    <span class="pos-milk-name">🌾 Oat Milk (Plant-based)</span>
+                </div>
+                <div class="pos-size-milk-card ${this.currentOptions.size === 'large' && this.currentOptions.milk === 'oat' ? 'active' : ''}"
+                    data-size="large" data-milk="oat" onclick="MrCoffeePOS.selectSizeMilk('large', 'oat')">
+                    <div class="pos-size-card-header">
+                        <span class="pos-size-name">🥤 Large (500ml)</span>
+                        <span class="pos-size-price-tag">+Rp 13.000</span>
+                    </div>
+                    <span class="pos-milk-name">🌾 Oat Milk (Plant-based)</span>
+                </div>
+            `;
+        } else {
+            if (groupTitle) groupTitle.textContent = 'Pilihan Ukuran (Size)';
+            grid.innerHTML = `
+                <div class="pos-size-milk-card ${this.currentOptions.size === 'regular' ? 'active' : ''}"
+                    data-size="regular" data-milk="none" onclick="MrCoffeePOS.selectSizeMilk('regular', 'none')">
+                    <div class="pos-size-card-header">
+                        <span class="pos-size-name">☕ Regular (350ml)</span>
+                        <span class="pos-size-price-tag">Standar</span>
+                    </div>
+                    <span class="pos-milk-name">Porsi Standar Rasa Pas</span>
+                </div>
+                <div class="pos-size-milk-card ${this.currentOptions.size === 'large' ? 'active' : ''}"
+                    data-size="large" data-milk="none" onclick="MrCoffeePOS.selectSizeMilk('large', 'none')">
+                    <div class="pos-size-card-header">
+                        <span class="pos-size-name">🥤 Large (500ml)</span>
+                        <span class="pos-size-price-tag">+Rp 5.000</span>
+                    </div>
+                    <span class="pos-milk-name">Ekstra Porsi Lebih Puas</span>
+                </div>
+            `;
+        }
+    },
+
+    selectSizeMilk(size, milk) {
+        this.currentOptions.size = size;
+        this.currentOptions.milk = milk;
+        const cards = document.querySelectorAll('.pos-size-milk-card');
+        cards.forEach(c => {
+            const cSize = c.getAttribute('data-size');
+            const cMilk = c.getAttribute('data-milk');
+            c.classList.toggle('active', cSize === size && cMilk === milk);
+        });
+        this.updateFooterTotal();
     },
 
     closeModal() {
@@ -517,17 +636,6 @@ const MrCoffeePOS = {
         chips.forEach(c => c.classList.toggle('active', c.getAttribute('data-sugar') === this.currentOptions.sugar));
     },
 
-    selectMilk(milk) {
-        this.currentOptions.milk = milk;
-        this.updateMilkChips();
-        this.updateFooterTotal();
-    },
-
-    updateMilkChips() {
-        const chips = document.querySelectorAll('.pos-milk-chips .pos-chip');
-        chips.forEach(c => c.classList.toggle('active', c.getAttribute('data-milk') === this.currentOptions.milk));
-    },
-
     selectIce(ice) {
         this.currentOptions.ice = ice;
         const chips = document.querySelectorAll('.pos-ice-chips .pos-chip');
@@ -544,6 +652,9 @@ const MrCoffeePOS = {
     getUnitPrice() {
         if (!this.activeProduct) return 0;
         let p = this.activeProduct.price;
+        if (this.currentOptions.size === 'large') {
+            p += 5000;
+        }
         if (this.activeProduct.hasMilk && this.currentOptions.milk === 'oat') {
             p += 8000;
         }

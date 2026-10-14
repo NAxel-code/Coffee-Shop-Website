@@ -596,3 +596,31 @@
         grid-template-columns: 1fr;
     }
 }
+
+@media screen and (max-width: 600px) {
+    .order-page-wrapper {
+        padding: 6.8rem 4% 5rem;
+    }
+
+    .order-form-panel {
+        padding: 1.3rem;
+        border-radius: var(--radius-md);
+    }
+
+    .fulfillment-options {
+        gap: 8px;
+    }
+
+    .fulfillment-card {
+        padding: 0.75rem 0.35rem;
+        font-size: 0.78rem;
+    }
+
+    .addons-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .order-receipt-panel {
+        padding: 1.4rem;
+    }
+}

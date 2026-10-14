@@ -429,3 +429,333 @@
         justify-content: center;
     }
 }
+
+/* ==========================================================================
+   CHAGEE-STYLE COFFEE CUP STAMP HUNT CARD (10 CUPS)
+   ========================================================================== */
+.stamp-hunt-card {
+    background: var(--nm-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--nm-flat-lg);
+    border: var(--border-bevel);
+    padding: 2.5rem 3rem;
+    margin-bottom: 3.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.stamp-hunt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.stamp-hunt-title-group h2 {
+    color: var(--primary-color);
+    font-size: 1.75rem;
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stamp-kicker {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 0.3rem;
+}
+
+.stamp-hunt-title-group p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    max-width: 620px;
+    line-height: 1.5;
+}
+
+.stamp-hunt-badge {
+    background: var(--nm-surface);
+    border: var(--border-bevel);
+    box-shadow: var(--nm-inset-sm);
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    white-space: nowrap;
+}
+
+.stamp-hunt-badge span.stamp-count-val {
+    color: var(--accent-color);
+    font-size: 1.25rem;
+}
+
+/* 10 Stamps Slots Grid */
+.stamp-slots-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.1rem;
+    margin-bottom: 2.2rem;
+}
+
+.stamp-slot {
+    aspect-ratio: 1;
+    background: var(--nm-surface);
+    border-radius: var(--radius-md);
+    box-shadow: var(--nm-flat-sm);
+    border: var(--border-bevel);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 0.5rem;
+    position: relative;
+    transition: var(--transition-smooth);
+    user-select: none;
+}
+
+.stamp-slot.empty {
+    border: 1.5px dashed rgba(56, 36, 30, 0.22);
+    box-shadow: none;
+    background: rgba(255, 255, 255, 0.2);
+    opacity: 0.75;
+}
+
+.stamp-slot.empty .stamp-slot-icon {
+    font-size: 1.7rem;
+    filter: grayscale(1) opacity(0.35);
+}
+
+.stamp-slot.empty .stamp-slot-num {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-light);
+    margin-top: 4px;
+}
+
+.stamp-slot.stamped {
+    box-shadow: var(--nm-inset-sm);
+    background: rgba(178, 93, 43, 0.08);
+    border: 1.5px solid rgba(178, 93, 43, 0.45);
+    transform: scale(0.98);
+}
+
+.stamp-slot.stamped .stamp-slot-icon {
+    font-size: 1.85rem;
+    animation: stampPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes stampPop {
+    0% { transform: scale(0.4) rotate(-15deg); opacity: 0; }
+    70% { transform: scale(1.15) rotate(5deg); }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.stamp-slot.stamped .stamp-slot-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-top: 4px;
+    background: rgba(178, 93, 43, 0.12);
+    padding: 2px 8px;
+    border-radius: var(--radius-pill);
+}
+
+/* 10th Cup Reward Slot */
+.stamp-slot.reward-slot {
+    border: 1.5px dashed var(--accent-color);
+    background: rgba(178, 93, 43, 0.06);
+}
+
+.stamp-slot.reward-slot .stamp-slot-icon {
+    font-size: 2rem;
+}
+
+.stamp-slot.reward-slot .stamp-slot-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-top: 4px;
+}
+
+.stamp-slot.reward-slot.completed {
+    background: linear-gradient(135deg, rgba(178, 93, 43, 0.18), rgba(212, 163, 115, 0.28));
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 16px rgba(178, 93, 43, 0.35), var(--nm-flat-sm);
+    animation: rewardPulse 2s infinite ease-in-out;
+}
+
+@keyframes rewardPulse {
+    0%, 100% { box-shadow: 0 0 12px rgba(178, 93, 43, 0.3); }
+    50% { box-shadow: 0 0 24px rgba(178, 93, 43, 0.6); }
+}
+
+/* Progress bar section */
+.stamp-progress-section {
+    background: var(--nm-surface);
+    border: var(--border-bevel);
+    box-shadow: var(--nm-inset-sm);
+    padding: 1.2rem 1.6rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 1.8rem;
+}
+
+.stamp-progress-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+}
+
+.stamp-progress-bar {
+    width: 100%;
+    height: 12px;
+    background: var(--nm-surface);
+    box-shadow: var(--nm-inset);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+    padding: 2px;
+}
+
+.stamp-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-color), #D4A373);
+    border-radius: var(--radius-pill);
+    box-shadow: var(--nm-flat-sm);
+    transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Action Bar */
+.stamp-action-group {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.btn-collect-stamps {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+    color: #ffffff;
+    padding: 0.8rem 1.6rem;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    font-size: 0.92rem;
+    text-decoration: none;
+    box-shadow: var(--nm-flat-sm);
+    transition: var(--transition-smooth);
+}
+
+.btn-collect-stamps:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--nm-hover);
+}
+
+.btn-demo-stamp {
+    background: var(--nm-surface);
+    border: var(--border-bevel);
+    box-shadow: var(--nm-flat-sm);
+    color: var(--accent-color);
+    padding: 0.75rem 1.2rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.84rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.btn-demo-stamp:hover {
+    box-shadow: var(--nm-inset-sm);
+    background: rgba(178, 93, 43, 0.08);
+}
+
+.btn-claim-free-coffee {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #2D6A4F, #40916C);
+    color: #ffffff;
+    padding: 0.85rem 1.8rem;
+    border-radius: var(--radius-pill);
+    font-weight: 700;
+    font-size: 0.96rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(45, 106, 79, 0.35);
+    transition: var(--transition-smooth);
+    animation: claimBounce 2s infinite ease-in-out;
+}
+
+@keyframes claimBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+.stamp-reward-sub {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+@media screen and (max-width: 768px) {
+    .stamp-hunt-card {
+        padding: 1.8rem 1.4rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .stamp-slots-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+    }
+
+    .stamp-slot {
+        padding: 0.5rem 0.2rem;
+    }
+
+    .stamp-slot.stamped .stamp-slot-icon,
+    .stamp-slot.empty .stamp-slot-icon {
+        font-size: 1.35rem;
+    }
+
+    .stamp-slot.stamped .stamp-slot-badge,
+    .stamp-slot.empty .stamp-slot-num,
+    .stamp-slot.reward-slot .stamp-slot-badge {
+        font-size: 0.65rem;
+        padding: 1px 4px;
+    }
+
+    .stamp-action-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-collect-stamps,
+    .btn-claim-free-coffee {
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .rewards-page-wrapper {
+        padding: 6.8rem 4% 5rem;
+    }
+
+    .loyalty-club-card {
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .tier-progress-box {
+        padding: 1.2rem;
+    }
+}
