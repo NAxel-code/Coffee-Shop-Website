@@ -832,7 +832,8 @@ function setupMobileMenu() {
     const navLinks = document.querySelector('.nav-links');
     if (!hamburger || !navLinks) return;
 
-    hamburger.addEventListener('click', () => {
+    hamburger.addEventListener('click', (e) => {
+        e.stopPropagation();
         hamburger.classList.toggle('active');
         navLinks.classList.toggle('active');
     });
@@ -843,6 +844,14 @@ function setupMobileMenu() {
             hamburger.classList.remove('active');
             navLinks.classList.remove('active');
         });
+    });
+
+    // Close on click outside
+    document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && !navLinks.contains(e.target) && navLinks.classList.contains('active')) {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+        }
     });
 }
 

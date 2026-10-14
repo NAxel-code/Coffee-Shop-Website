@@ -110,6 +110,7 @@ header {
 }
 
 .navbar {
+    position: relative;
     pointer-events: auto;
     display: flex;
     justify-content: space-between;
@@ -217,7 +218,7 @@ header {
 
 /* Nav Cart Button */
 .cart-trigger-btn {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 7px;
     background: var(--nm-surface);
@@ -232,6 +233,15 @@ header {
     transition: var(--transition-smooth);
     white-space: nowrap;
     flex-shrink: 0;
+}
+
+.cart-btn-icon {
+    font-size: 0.95rem;
+    line-height: 1;
+}
+
+.cart-btn-text {
+    display: inline;
 }
 
 .cart-trigger-btn:hover {
@@ -1555,25 +1565,29 @@ footer {
 
     .navbar {
         width: 100%;
-        border-radius: var(--radius-md);
-        padding: 0.7rem 1.2rem;
+        border-radius: var(--radius-pill);
+        padding: 0.55rem 1.1rem;
+        gap: 0.6rem;
     }
 
     .nav-links {
         display: none;
         position: absolute;
-        top: 100%;
+        top: calc(100% + 8px);
         left: 0;
         width: 100%;
-        background: var(--nm-surface);
-        box-shadow: var(--nm-flat-lg);
-        border-radius: var(--radius-md);
-        margin-top: 8px;
-        padding: 1.5rem;
+        background: rgba(234, 229, 223, 0.98);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        box-shadow: 0 16px 36px rgba(56, 36, 30, 0.22);
+        border-radius: var(--radius-lg);
+        margin-top: 0;
+        padding: 1.25rem;
         flex-direction: column;
         align-items: stretch;
-        gap: 0.8rem;
+        gap: 0.6rem;
         border: var(--border-bevel);
+        z-index: 1001;
     }
     
     .nav-links.active {
@@ -1582,6 +1596,16 @@ footer {
     
     .hamburger {
         display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        padding: 6px;
+        border-radius: var(--radius-sm);
+        background: var(--nm-surface);
+        border: var(--border-bevel);
+        box-shadow: var(--nm-flat-sm);
+        flex-shrink: 0;
     }
     
     .reward-card {
@@ -1612,6 +1636,111 @@ footer {
     
     .cart-drawer {
         max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        top: 0.45rem;
+        padding: 0 0.6rem;
+    }
+
+    .navbar {
+        padding: 0.42rem 0.75rem;
+        gap: 6px;
+    }
+
+    .logo {
+        gap: 7px;
+    }
+
+    .logo img {
+        height: 28px;
+        width: auto;
+    }
+
+    .logo h1 {
+        font-size: 1.05rem;
+        letter-spacing: 0.02em;
+    }
+
+    .logo-tagline {
+        display: none;
+    }
+
+    .nav-actions {
+        gap: 5px;
+    }
+
+    .store-status-badge {
+        padding: 0.28rem 0.55rem;
+        font-size: 0.72rem;
+        gap: 4px;
+        height: 32px;
+    }
+
+    .cart-btn-text {
+        display: none;
+    }
+
+    .cart-trigger-btn {
+        padding: 0.35rem 0.65rem;
+        gap: 4px;
+        height: 34px;
+        font-size: 0.92rem;
+        border-radius: var(--radius-pill);
+    }
+
+    .cart-badge {
+        min-width: 17px;
+        height: 17px;
+        font-size: 0.68rem;
+        padding: 0 4px;
+    }
+
+    .hamburger {
+        width: 34px;
+        height: 34px;
+        padding: 5px;
+    }
+
+    .hamburger span {
+        width: 18px;
+        height: 2px;
+    }
+
+    /* Fix Hero section and floating badges on mobile */
+    .hero-section {
+        padding: 6.8rem 5% 4rem;
+    }
+
+    .hero-visual {
+        overflow: visible;
+        padding: 0 5px;
+    }
+
+    .floating-glass-badge {
+        padding: 0.5rem 0.85rem;
+        gap: 8px;
+        z-index: 4;
+    }
+
+    .floating-glass-badge h5 {
+        font-size: 0.78rem;
+    }
+
+    .floating-glass-badge p {
+        font-size: 0.68rem;
+    }
+
+    .floating-glass-badge.top-badge {
+        top: 10px;
+        left: 10px;
+    }
+
+    .floating-glass-badge.bottom-badge {
+        bottom: 10px;
+        right: 10px;
     }
 }
 
@@ -1662,6 +1791,40 @@ footer {
     .testimonial-section,
     .newsletter-section {
         padding: 4.5rem 5% !important;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    header {
+        padding: 0 0.4rem;
+    }
+
+    .navbar {
+        padding: 0.38rem 0.55rem;
+        gap: 4px;
+    }
+
+    .logo h1 {
+        font-size: 0.95rem;
+    }
+
+    .logo img {
+        height: 25px;
+    }
+
+    .store-status-badge {
+        padding: 0.25rem 0.45rem;
+        font-size: 0.68rem;
+    }
+
+    .cart-trigger-btn {
+        padding: 0.3rem 0.52rem;
+    }
+
+    .hamburger {
+        width: 32px;
+        height: 32px;
+        padding: 4px;
     }
 }
 
