@@ -707,55 +707,227 @@
 }
 
 @media screen and (max-width: 768px) {
+    .rewards-page-wrapper {
+        padding: 5.2rem 4% 2.8rem;
+    }
+
+    .rewards-header-block {
+        margin-bottom: 1.6rem;
+        text-align: center;
+    }
+
+    .rewards-header-block h1 {
+        font-size: 1.75rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .rewards-header-block p {
+        font-size: 0.85rem;
+        line-height: 1.45;
+    }
+
+    .loyalty-club-card {
+        padding: 1.15rem 0.95rem;
+        gap: 1.1rem;
+        border-radius: var(--radius-md);
+        margin-bottom: 1.5rem;
+    }
+
+    .club-info h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .club-info p {
+        font-size: 0.82rem;
+        line-height: 1.45;
+        margin-bottom: 0.85rem;
+    }
+
+    .tier-pills-row {
+        gap: 6px;
+    }
+
+    .tier-pill {
+        padding: 0.35rem 0.75rem;
+        font-size: 0.74rem;
+    }
+
+    .tier-progress-box {
+        padding: 0.85rem 0.8rem;
+        border-radius: var(--radius-sm);
+    }
+
+    .progress-header {
+        font-size: 0.78rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .progress-subtext {
+        font-size: 0.74rem;
+        margin-top: 0.4rem;
+    }
+
+    /* Stamp Hunt Card Mobile */
     .stamp-hunt-card {
-        padding: 1.8rem 1.4rem;
-        margin-bottom: 2.5rem;
+        padding: 1.15rem 0.95rem;
+        margin-bottom: 1.8rem;
+        border-radius: var(--radius-md);
+    }
+
+    .stamp-hunt-header h3 {
+        font-size: 1.25rem;
+    }
+
+    .stamp-hunt-desc {
+        font-size: 0.82rem;
+        margin-bottom: 0.95rem;
+        line-height: 1.45;
     }
 
     .stamp-slots-grid {
         grid-template-columns: repeat(5, 1fr);
-        gap: 8px;
+        gap: 6px;
+        margin-bottom: 0.95rem;
     }
 
     .stamp-slot {
-        padding: 0.5rem 0.2rem;
+        padding: 0.4rem 0.15rem;
+        min-height: 48px;
+        border-radius: var(--radius-sm);
     }
 
     .stamp-slot.stamped .stamp-slot-icon,
     .stamp-slot.empty .stamp-slot-icon {
-        font-size: 1.35rem;
+        font-size: 1.2rem;
     }
 
     .stamp-slot.stamped .stamp-slot-badge,
     .stamp-slot.empty .stamp-slot-num,
     .stamp-slot.reward-slot .stamp-slot-badge {
-        font-size: 0.65rem;
-        padding: 1px 4px;
+        font-size: 0.62rem;
+        padding: 1px 3px;
     }
 
     .stamp-action-group {
         flex-direction: column;
         align-items: stretch;
+        gap: 8px;
     }
 
     .btn-collect-stamps,
     .btn-claim-free-coffee {
+        width: 100%;
+        padding: 0.6rem 1rem;
+        font-size: 0.82rem;
         text-align: center;
         justify-content: center;
     }
+
+    /* Vouchers Grid & Cards Mobile */
+    .vouchers-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .voucher-ticket-card {
+        border-radius: var(--radius-md);
+    }
+
+    .voucher-img-header {
+        height: 135px;
+        border-radius: calc(var(--radius-md) - 6px) calc(var(--radius-md) - 6px) 0 0;
+    }
+
+    .voucher-badge {
+        font-size: 0.65rem;
+        padding: 0.22rem 0.6rem;
+        top: 0.6rem;
+        left: 0.6rem;
+    }
+
+    .voucher-body {
+        padding: 0.95rem 0.85rem;
+    }
+
+    .voucher-body h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .voucher-body p {
+        font-size: 0.78rem;
+        line-height: 1.35;
+        margin-bottom: 0.75rem;
+    }
+
+    .voucher-code-strip {
+        padding: 0.4rem 0.75rem;
+        margin-bottom: 0.85rem;
+    }
+
+    .voucher-code-val {
+        font-size: 0.92rem;
+        letter-spacing: 0.08em;
+    }
+
+    .btn-copy-voucher {
+        padding: 0.35rem 0.75rem;
+        font-size: 0.76rem;
+    }
+
+    .voucher-card-footer {
+        gap: 6px;
+    }
+
+    .voucher-card-footer .btn-primary,
+    .voucher-card-footer .btn-secondary {
+        padding: 0.55rem 0.85rem;
+        font-size: 0.78rem;
+        flex: 1;
+        justify-content: center;
+    }
+
+    /* App Download Banner Mobile */
+    .app-download-banner {
+        padding: 1.2rem 1rem;
+        border-radius: var(--radius-md);
+        gap: 1rem;
+    }
+
+    .app-download-banner h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .app-download-banner p {
+        font-size: 0.82rem;
+        line-height: 1.45;
+        margin-bottom: 0.85rem;
+    }
+
+    .app-store-btns {
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .app-store-btn img {
+        height: 34px;
+    }
 }
 
-@media screen and (max-width: 600px) {
-    .rewards-page-wrapper {
-        padding: 6.8rem 4% 5rem;
+@media screen and (max-width: 400px) {
+    .stamp-slots-grid {
+        gap: 4px;
     }
 
-    .loyalty-club-card {
-        padding: 1.5rem;
-        gap: 1.5rem;
+    .stamp-slot {
+        min-height: 44px;
+        padding: 0.3rem 0.1rem;
     }
 
-    .tier-progress-box {
-        padding: 1.2rem;
+    .stamp-slot.stamped .stamp-slot-icon,
+    .stamp-slot.empty .stamp-slot-icon {
+        font-size: 1.1rem;
     }
 }

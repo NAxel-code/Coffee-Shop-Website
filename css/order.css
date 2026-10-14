@@ -589,7 +589,7 @@
     }
     
     .order-form-panel {
-        padding: 2rem;
+        padding: 1.8rem;
     }
     
     .form-row-2 {
@@ -597,30 +597,141 @@
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
     .order-page-wrapper {
-        padding: 6.8rem 4% 5rem;
+        padding: 5.2rem 4% 2.8rem;
+    }
+
+    .order-header-block {
+        margin-bottom: 1.6rem;
+        text-align: center;
+    }
+
+    .order-header-block h1 {
+        font-size: 1.75rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .order-header-block p {
+        font-size: 0.85rem;
+        line-height: 1.45;
     }
 
     .order-form-panel {
-        padding: 1.3rem;
+        padding: 1.15rem 0.95rem;
         border-radius: var(--radius-md);
     }
 
+    .form-section-title {
+        font-size: 1.05rem;
+        margin-bottom: 0.85rem;
+        padding-bottom: 0.35rem;
+        gap: 6px;
+    }
+
     .fulfillment-options {
-        gap: 8px;
+        gap: 6px;
+        margin-bottom: 1.1rem;
     }
 
     .fulfillment-card {
-        padding: 0.75rem 0.35rem;
-        font-size: 0.78rem;
+        padding: 0.6rem 0.35rem;
+        font-size: 0.76rem;
+        border-radius: var(--radius-sm);
+    }
+
+    .fulfillment-icon {
+        font-size: 1.15rem;
+        margin-bottom: 3px;
+    }
+
+    .coffee-picker-grid {
+        gap: 8px;
+    }
+
+    .picker-card {
+        padding: 0.55rem;
+        border-radius: var(--radius-sm);
+    }
+
+    .picker-card img {
+        height: 65px;
+        border-radius: calc(var(--radius-sm) - 2px);
+        margin-bottom: 0.35rem;
+    }
+
+    .picker-name {
+        font-size: 0.8rem;
+    }
+
+    .picker-price {
+        font-size: 0.74rem;
     }
 
     .addons-grid {
         grid-template-columns: 1fr;
+        gap: 6px;
+        margin-bottom: 1.1rem;
+    }
+
+    .addon-pill {
+        padding: 0.45rem 0.75rem;
+        font-size: 0.78rem;
+        border-radius: var(--radius-sm);
+    }
+
+    .form-group-field {
+        margin-bottom: 0.85rem;
+    }
+
+    .form-group-field label {
+        font-size: 0.8rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .form-group-field input,
+    .form-group-field textarea {
+        padding: 0.6rem 0.85rem;
+        font-size: 16px !important;
+        border-radius: var(--radius-sm);
+    }
+
+    .payment-methods-grid {
+        gap: 6px;
+    }
+
+    .payment-card {
+        padding: 0.65rem 0.5rem;
+        font-size: 0.78rem;
+        border-radius: var(--radius-sm);
+    }
+
+    .payment-icon {
+        font-size: 1.15rem;
     }
 
     .order-receipt-panel {
-        padding: 1.4rem;
+        padding: 1.15rem 0.95rem;
+        border-radius: var(--radius-md);
+        margin-top: 1.2rem;
+    }
+
+    .receipt-header h3 {
+        font-size: 1.15rem;
+    }
+
+    .receipt-item {
+        padding: 0.55rem 0;
+        font-size: 0.82rem;
+    }
+
+    .receipt-total {
+        font-size: 1.15rem;
+        padding-top: 0.7rem;
+    }
+
+    .btn-submit-order {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.88rem;
     }
 }

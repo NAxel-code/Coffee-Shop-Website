@@ -409,3 +409,146 @@
     border: var(--border-bevel);
     color: var(--text-muted);
 }
+
+/* ==========================================================================
+   MOBILE RESPONSIVE SCALING FOR MENU CATALOG
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    .menu-page-header {
+        padding: 5.2rem 4% 1.8rem;
+    }
+
+    .menu-page-header h1 {
+        font-size: 1.75rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .menu-page-header p {
+        font-size: 0.85rem;
+        line-height: 1.45;
+        margin-bottom: 1.2rem;
+    }
+
+    .menu-controls-wrapper {
+        margin-bottom: 1.4rem;
+        gap: 1rem;
+    }
+
+    .menu-search-box {
+        max-width: 100%;
+    }
+
+    .menu-search-input {
+        padding: 0.65rem 1rem 0.65rem 2.6rem;
+        font-size: 16px !important;
+    }
+
+    .menu-search-icon {
+        left: 0.95rem;
+        font-size: 0.95rem;
+    }
+
+    .menu-filter-bar {
+        gap: 0.45rem;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 6px;
+        -webkit-overflow-scrolling: touch;
+        flex-wrap: nowrap;
+        width: 100%;
+    }
+
+    .filter-chip-btn {
+        padding: 0.42rem 0.8rem;
+        font-size: 0.78rem;
+        gap: 5px;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .filter-chip-btn .chip-count {
+        font-size: 0.68rem;
+        padding: 1px 6px;
+    }
+
+    .menu-catalog-section {
+        padding: 0 4% 3.5rem;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+        gap: 0.95rem;
+    }
+
+    .menu-card {
+        padding: 0.8rem;
+        border-radius: var(--radius-md);
+    }
+
+    .menu-card-img-wrap {
+        height: 145px;
+        border-radius: calc(var(--radius-md) - 6px);
+    }
+
+    .menu-card-type-tag {
+        top: 8px;
+        right: 8px;
+        font-size: 0.65rem;
+        padding: 0.22rem 0.6rem;
+    }
+
+    .menu-card-content {
+        padding: 0.75rem 0.2rem 0.2rem;
+    }
+
+    .menu-card-content h3 {
+        font-size: 1.05rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .menu-card-price {
+        font-size: 0.98rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .menu-card-desc {
+        font-size: 0.78rem;
+        line-height: 1.35;
+        margin-bottom: 0.6rem;
+    }
+
+    .menu-card-actions {
+        padding-top: 0.6rem;
+        gap: 6px;
+    }
+
+    .btn-add-bag,
+    .btn-order-direct {
+        padding: 0.42rem 0.8rem;
+        font-size: 0.78rem;
+    }
+
+    .menu-modal-card {
+        padding: 1.15rem 0.95rem;
+        border-radius: var(--radius-md);
+        max-width: calc(100% - 24px);
+    }
+
+    .menu-modal-img {
+        height: 160px;
+        margin-bottom: 0.85rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .menu-card-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-add-bag,
+    .btn-order-direct {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+}

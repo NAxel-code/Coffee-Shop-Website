@@ -273,11 +273,164 @@
     }
     
     .founder-frame {
-        max-width: 320px;
+        max-width: 260px;
         margin: 0 auto;
     }
     
     .mission-vision-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .about-page-wrapper {
+        padding: 5.2rem 4% 2.8rem;
+    }
+
+    .about-hero-block {
+        margin-bottom: 1.6rem;
+        text-align: center;
+    }
+
+    .about-hero-block h1 {
+        font-size: 1.75rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .about-hero-block p {
+        font-size: 0.85rem;
+        line-height: 1.45;
+    }
+
+    .founder-editorial-card {
+        padding: 1.15rem 0.95rem;
+        gap: 1.2rem;
+        margin-bottom: 2rem;
+        border-radius: var(--radius-md);
+    }
+
+    .founder-frame {
+        max-width: 160px;
+        margin: 0 auto;
+        border-radius: calc(var(--radius-md) - 4px);
+    }
+
+    .founder-frame img {
+        height: 175px;
+    }
+
+    .founder-gold-tag {
+        font-size: 0.65rem;
+        padding: 0.25rem 0.75rem;
+        bottom: -10px;
+    }
+
+    .founder-text-col h2 {
+        font-size: 1.3rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .founder-subtitle {
+        font-size: 0.74rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .founder-bio p {
+        font-size: 0.82rem;
+        line-height: 1.48;
+        margin-bottom: 0.75rem;
+    }
+
+    .founder-signature {
+        font-size: 0.8rem;
+        margin-top: 0.8rem;
+    }
+
+    .process-section {
+        margin-bottom: 2.2rem;
+    }
+
+    .process-header {
+        margin-bottom: 1.4rem;
+    }
+
+    .process-header h2 {
+        font-size: 1.35rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .process-header p {
+        font-size: 0.82rem;
+        line-height: 1.45;
+    }
+
+    .process-steps-grid {
+        grid-template-columns: 1fr;
+        gap: 0.9rem;
+    }
+
+    .process-step-card {
+        padding: 1.1rem 0.95rem;
+        border-radius: var(--radius-md);
+    }
+
+    .step-icon-wrap {
+        width: 42px;
+        height: 42px;
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .step-num-badge {
+        font-size: 1.35rem;
+        top: 12px;
+        right: 12px;
+    }
+
+    .process-step-card h3 {
+        font-size: 1.05rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .process-step-card p {
+        font-size: 0.82rem;
+        line-height: 1.45;
+    }
+
+    .mission-vision-grid {
+        grid-template-columns: 1fr;
+        gap: 0.9rem;
+        margin-bottom: 2rem;
+    }
+
+    .mv-card {
+        padding: 1.1rem 0.95rem;
+        border-radius: var(--radius-md);
+    }
+
+    .mv-card h2 {
+        font-size: 1.25rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .mv-card p {
+        font-size: 0.82rem;
+        line-height: 1.48;
+    }
+
+    .story-full-card {
+        padding: 1.2rem 1rem;
+        border-radius: var(--radius-md);
+    }
+
+    .story-full-card h2 {
+        font-size: 1.35rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .story-full-card p {
+        font-size: 0.84rem;
+        line-height: 1.48;
+        margin-bottom: 0.85rem;
     }
 }
